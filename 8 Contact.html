@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact | Praxis Initiative</title>
+    <style>
+        .contact-method {
+            margin: 25px 0;
+            padding: 20px;
+            background: #f0f0f0;
+            border-radius: 8px;
+        }
+        #contact-form textarea {
+            width: 100%;
+            min-height: 150px;
+        }
+    </style>
+</head>
+<body>
+    <header><!-- Consistent header --></header>
+
+    <section class="hero">
+        <h1>Contact Our Team</h1>
+        <p>We respond within 48 hours to all inquiries.</p>
+    </section>
+
+    <div class="contact-container">
+        <section class="contact-info">
+            <div class="contact-method">
+                <h2>General Inquiries</h2>
+                <p>Email: <a href="mailto:info@praxisinitiative.org">info@praxisinitiative.org</a></p>
+                <p>Phone: (602) 555-0192</p>
+            </div>
+
+            <div class="contact-method">
+                <h2>Legal Assistance</h2>
+                <p>Email: <a href="mailto:legal@praxisinitiative.org">legal@praxisinitiative.org</a></p>
+                <p>For incarcerated individuals: Mail to our PO Box (no stamps required)</p>
+            </div>
+
+            <div class="contact-method">
+                <h2>Press & Media</h2>
+                <p>Email: <a href="mailto:press@praxisinitiative.org">press@praxisinitiative.org</a></p>
+                <p>Media kit available upon request</p>
+            </div>
+        </section>
+
+        <section class="contact-form">
+            <form id="contact-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Email" required>
+                <select required>
+                    <option value="">Select a topic</option>
+                    <option>Legal Assistance</option>
+                    <option>Volunteer Inquiry</option>
+                    <option>Donation Question</option>
+                    <option>Press Inquiry</option>
+                </select>
+                <textarea placeholder="Your message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+    </div>
+
+    <footer><!-- Consistent footer --></footer>
+</body>
+</html>

@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Programs - Praxis Initiative</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-navy: #000080;
+            --secondary-maroon: #800000;
+            --white: #FFFFFF;
+            --light-gray: #F8F9FA;
+            --light-blue: #E8F0FF;
+            --dark-gray: #333333;
+            --medium-gray: #666666;
+            --light-purple: #E8E3F3;
+            --success-green: #28a745;
+            --urgent-red: #dc3545;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: var(--primary-navy);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: #000066;
+            transform: translateY(-2px);
+        }
+
+        .btn-urgent {
+            background: var(--urgent-red);
+            color: var(--white);
+            animation: pulse-urgent 2s infinite;
+        }
+
+        @keyframes pulse-urgent {
+            0% { box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3); }
+            50% { box-shadow: 0 4px 25px rgba(220, 53, 69, 0.6); }
+            100% { box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3); }
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-navy);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: var(--primary-navy);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-navy) 0%, #4A0E4E 100%);
+            color: var(--white);
+            padding: 160px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="none" width="1200" height="600"/><g opacity="0.1"><circle cx="200" cy="150" r="100" fill="white"/><circle cx="800" cy="400" r="80" fill="white"/><circle cx="1000" cy="200" r="60" fill="white"/></g></svg>') no-repeat center;
+            background-size: cover;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 60px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+
+        /* Crisis Stats */
+        .crisis-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .crisis-stat {
+            background: rgba(255,255,255,0.15);
+            padding: 30px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            text-align: center;
+        }
+
+        .crisis-number {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #FFD700;
+        }
+
+        .crisis-label {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        /* Baldwin Quote */
+        .baldwin-quote {
+            background: var(--dark-gray);
+            color: var(--white);
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .quote-text {
+            font-size: 36px;
+            font-style: italic;
+            font-weight: 300;
+            margin-bottom: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.4;
+        }
+
+        .quote-author {
+            font-size: 18px;
+            font-weight: 600;
+            opacity: 0.8;
+        }
+
+        /* Program Sections */
+        .program-section {
+            background: var(--white);
+        }
+
+        .program-section:nth-child(even) {
+            background: var(--light-gray);
+        }
+
+        .program-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .program-text h2 {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--primary-navy);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .program-text p {
+            font-size: 18px;
+            color: var(--medium-gray);
+            margin-bottom: 30px;
+            line-height: 1.7;
+        }
+
+        .program-features {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .program-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .program-feature-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--success-green);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .program-feature-content h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--primary-navy);
+            margin-bottom: 5px;
+        }
+
+        .program-feature-content p {
+            font-size: 14px;
+            color: var(--medium-gray);
+        }
+
+        .program-image {
+            height: 400px;
+            background: linear-gradient(135deg, #333, #555);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 18px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .program-cta {
+            margin-top: 40px;
+        }
+
+        /* Call to Action */
+        .cta-section {
+            background: var(--urgent-red);
+            color: var(--white);
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .cta-section h2 {
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        .cta-section p {
+            font-size: 24px;
+            margin-bottom: 50px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-white {
+            background: var(--white);
+            color: var(--urgent-red);
+            font-size: 20px;
+            padding: 20px 40px;
+        }
+
+        .btn-white:hover {
+            background: var(--light-gray);
+            transform: translateY(-3px);
+        }
+
+        .btn-outline-white {
+            background: transparent;
+            color: var(--white);
+            border: 3px solid var(--white);
+            font-size: 18px;
+        }
+
+        .btn-outline-white:hover {
+            background: var(--white);
+            color: var(--urgent-red);
+        }
+
+        /* Footer */
+        .footer {
+            background: #000;
+            color: var(--medium-gray);
+            padding: 40px 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .footer-links a {
+            color: var(--medium-gray);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--medium-gray);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background: var(--primary-navy);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .crisis-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+
+            .program-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .quote-text {
+                font-size: 24px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            h2 {
+                font-size: 36px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .crisis-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+
+            .btn {
+                padding: 12px 24px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">@</div>
+                <nav class="nav-menu">
+                    <a href="index.html">Home</a>
+                    <a href="issues.html">Issues</a>
+                    <a href="programs.html" class="active">Programs</a>
+                    <a href="about.html">About</a>
+                    <a href="action-center.html">Action Center</a>
+                    <a href="news.html">News</a>
+                    <a href="partners.html">Partners</a>
+                    <a href="donate.html">Donate</a>
+                    <a href="contact.html">Contact</a>
+                </nav>
+                <a href="donate.html" class="btn btn-urgent">FUND PROVEN SOLUTIONS</a>
+                <button class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Our Programs</h1>
+                <p>Comprehensive solutions for systemic change through independent oversight, legal reform, harm reduction, and personal support.</p>
+                
+                <div class="crisis-stats">
+                    <div class="crisis-stat">
+                        <div class="crisis-number">13%</div>
+                        <div class="crisis-label">Portion of State population with felony conviction in AZ</div>
+                    </div>
+                    <div class="crisis-stat">
+                        <div class="crisis-number">446+</div>
+                        <div class="crisis-label">Imprisonment Rate Per 100k residents in AZ</div>
+                    </div>
+                    <div class="crisis-stat">
+                        <div class="crisis-number">4.2%</div>
+                        <div class="crisis-label">Felony Disenfranchisement Rate in AZ</div>
+                    </div>
+                    <div class="crisis-stat">
+                        <div class="crisis-number">215,000+</div>
+                        <div class="crisis-label">Disenfranchised Arizona Citizens</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Baldwin Quote -->
+    <section class="baldwin-quote">
+        <div class="container">
+            <div class="quote-text">"Not everything that is faced can be changed, but nothing can be changed until it is faced."</div>
+            <div class="quote-author">— James Baldwin</div>
+        </div>
+    </section>
+
+    <!-- Independent Prison Oversight -->
+    <section class="program-section section">
+        <div class="container">
+            <div class="program-content">
+                <div class="program-text">
+                    <h2>Independent Prison Oversight</h2>
+                    <p>Ensuring accountability and transparency in correctional facilities through comprehensive monitoring and evidence-based advocacy. Our oversight program works to improve conditions, protect rights, and promote effective rehabilitation.</p>
+                    
+                    <div class="program-features">
+                        <div class="program-feature">
+                            <div class="program-feature-icon">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                            <div class="program-feature-content">
+                                <h3>Independent Monitoring</h3>
+                                <p>Created Arizona's first Independent Correctional Oversight Office in 2024</p>
+                            </div>
+                        </div>
+                        <div class="program-feature">
+                            <div class="program-feature-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="program-feature-content">
+                                <h3>Rights Protection</h3>
+                                <p>Prevents constitutional violations and protects human dignity</p>
+                            </div>
+                        </div>
+                        <div class="program-feature">
+                            <div class="program-feature-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="program-feature-content">
+                                <h3>Evidence-Based Reform</h3>
+                                <p>Data-driven recommendations that improve outcomes and save lives</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="program-cta">
+                        <a href="donate.html" class="btn btn-primary">Fund Oversight Investigations</a>
+                    </div>
+                </div>
+                <div class="program-image">
+                    <p>Independent oversight<br>ensuring accountability<br>& transparency</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Criminal Legal System Reform -->
+    <section class="program-section section">
+        <div class="container">
+            <div class="program-content">
+                <div class="program-image">
+                    <p>Policy research<br>& legislative advocacy</p>
+                </div>
+                <div class="program-text">
+                    <h2>Criminal Legal System Reform</h2>
+                    <p>Working to transform the justice system through evidence-based policy reform, legislative advocacy, and community engagement. We focus on creating meaningful changes that promote fairness and public safety.</p>
+                    
+                    <div class="program-features">
+                        <div class="program-feature">
+                            <div class="program-feature-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <div class="program-feature-content">
+                                <h3>Policy Development</h3>
+                                <p>Rigorous research and legislative advocacy based on lived experience</p>
+                            </div>
+                        </div>
+                        <div class="program-feature">
+                            <div class="program-feature-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="program-feature-content">
+                                <h3>Coalition Building</h3>
+                                <p>Building coalitions across ideological lines for bipartisan reform</p>
+                            </div>
+                        </div>
+                        <div class="program-feature">
+                            <div class="program-feature-icon">
+                                <i class="fas fa-gavel"></i>
+                            </div>
+                            <div class="program-feature-content">
+                                <h3>Legislative Victories</h3>
+                                <p>Successfully passed independent oversight legislation in 2024</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="program-cta">
+                        <a href="action-center.html" class="btn btn-primary">Join Our Advocacy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Drug Use Risk Mitigation -->
+    <section class="program-section section">
+        <div class="container">
+            <div class="program-content">
+                <div class="program-text">
+                    <h2>Drug Use Risk Mitigation</h2>
+                    <p>Implementing comprehensive strategies to support individuals and communities through evidence-based approaches. Our program provides education, support services, and community resources to create positive change.</p>
+                    
+                    <div class="program-features">
+                        <div class="program-feature">
+                            <div class="program-feature-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <div class="program-feature-content">
+                                <h3>Harm Reduction</h3>
+                                <p>Evidence-based programs that reduce overdose deaths and save lives</p>
+                            </div>
+                        </div>
+                        <div class="program-feature">
+                            <div class="program-feature-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div class="program-feature-content">
+                                <h3>Community Education</h3>
+                                <p>Training programs and resources for families and communities</p>
+                            </div>
+                        </div>
+                        <div class="program-feature">
+                            <div class="program-feature-icon">
+                                <i class="fas fa-hands-helping"></i>
+                            </div>
+                            <div class="program-feature-content">
+                                <h3>Support Services</h3>
+                                <p>Direct assistance and resources for individuals and families in crisis</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="program-cta">
+                        <a href="donate.html" class="btn btn-primary">Support Life-Saving Programs</a>
+                    </div>
+                </div>
+                <div class="program-image">
+                    <p>Evidence-based harm reduction<br>and community support</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Civics and Advocacy Training -->
+    <section class="program-section section">
+        <div class="container">
+            <div class="program-content">
+                <div class="program-image">
+                    <p>Empowering returning citizens<br>through advocacy training</p>
+                </div>
+                <div class="program-text">
+                    <h2>Core Civics and Advocacy Training</h2>
+                    <p>Empowering formerly incarcerated individuals with the civic knowledge, advocacy skills, and leadership tools to drive systemic change. Through a focused curriculum on government systems, policy advocacy, storytelling, and reentry leadership, participants learn to turn lived experience into lasting impact.</p>
+                    
+                    <div class="program-features">
+                        <div class="program-feature">
+                            <div class="program-feature-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div class="program-feature-content">
+                                <h3>Civic Education</h3>
+                                <p>Government systems, policy development, and advocacy strategies</p>
+                            </div>
+                        </div>
+                        <div class="program-feature">
+                            <div class="program-feature-icon">
+                                <i class="fas fa-bullhorn"></i>
+                            </div>
+                            <div class="program-feature-content">
+                                <h3>Leadership Development</h3>
+                                <p>Training in public speaking, storytelling, and community organizing</p>
+                            </div>
+                        </div>
+                        <div class="program-feature">
+                            <div class="program-feature-icon">
+                                <i class="fas fa-exchange-alt"></i>
+                            </div>
+                            <div class="program-feature-content">
+                                <h3>Lived Experience to Public Power</h3>
+                                <p>Built by and for returning citizens, transforming personal insight into systemic change</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="program-cta">
+                        <a href="action-center.html" class="btn btn-primary">Get Training Information</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Arts in Prison - Think Motion -->
+    <section class="program-section section">
+        <div class="container">
+            <div class="program-content">
+                <div class="program-text">
+                    <h2>Arts in Prison - Think Motion</h2>
+                    <p>Praxis Initiative's Arts in Prison Program delivers music, theater, and movement-based experiences that foster healing, self-expression, and growth. Programs like Think Motion, led by Dr. Susan Bendix, use therapeutic movement to support trauma recovery.</p>
+                    
+                    <div class="program-features">
+                        <div class="program-feature">
+                            <div class="program-feature-icon">
+                                <i class="fas fa-music"></i>
+                            </div>
+                            <div class="program-feature-content">
+                                <h3>Music & Theater</h3>
+                                <p>Creative expression programs that foster healing and self-discovery</p>
+                            </div>
+                        </div>
+                        <div class="program-feature">
+                            <div class="program-feature-icon">
+                                <i class="fas fa-running"></i>
+                            </div>
+                            <div class="program-feature-content">
+                                <h3>Therapeutic Movement</h3>
+                                <p>Think Motion program led by Dr. Susan Bendix for trauma recovery</p>
+                            </div>
+                        </div>
+                        <div class="program-feature">
+                            <div class="program-feature-icon">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <div class="program-feature-content">
+                                <h3>Proven Results</h3>
+                                <p>Research by Dr. Larry Brewster shows arts programming reduces recidivism and disciplinary issues</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="program-cta">
+                        <a href="donate.html" class="btn btn-primary">Support Arts Programming</a>
+                    </div>
+                </div>
+                <div class="program-image">
+                    <p>Arts programming<br>fostering creativity<br>& transformation</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Fund These Proven Solutions</h2>
+            <p>Every program you see here is saving lives and transforming communities. Your donation directly funds these evidence-based interventions that work.</p>
+            
+            <div class="cta-buttons">
+                <a href="donate.html" class="btn btn-white">
+                    <i class="fas fa-heart"></i> FUND ALL PROGRAMS
+                </a>
+                <a href="action-center.html" class="btn btn-outline-white">
+                    <i class="fas fa-users"></i> VOLUNTEER WITH US
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <p>&copy; 2024 Praxis Initiative. Empowering communities for justice.</p>
+                    <div class="footer-links">
+                        <a href="about.html">About</a>
+                        <a href="programs.html">Programs</a>
+                        <a href="issues.html">Issues</a>
+                        <a href="contact.html">Contact</a>
+                        <a href="donate.html">Donate</a>
+                    </div>
+                </div>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'var(--white)';
+                header.style.backdropFilter = 'none';
+            }
+        });
+
+        // Counter animation for crisis stats
+        const observerOptions = {
+            threshold: 0.7,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counters = entry.target.querySelectorAll('.crisis-number');
+                    counters.forEach(counter => {
+                        const text = counter.textContent;
+                        if (text.includes('%')) {
+                            const target = parseInt(text);
+                            animateCounter(counter, 0, target, '%');
+                        } else if (text.includes('+')) {
+                            const target = parseInt(text.replace(/[^0-9]/g, ''));
+                            animateCounter(counter, 0, target, '+');
+                        } else if (text.includes(',')) {
+                            const target = parseInt(text.replace(/[^0-9]/g, ''));
+                            animateCounter(counter, 0, target, '+');
+                        }
+                    });
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        function animateCounter(element, start, end, suffix = '') {
+            const duration = 2000;
+            const increment = (end - start) / (duration / 16);
+            let current = start;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= end) {
+                    if (suffix === '+' && end >= 1000) {
+                        element.textContent = end.toLocaleString() + suffix;
+                    } else {
+                        element.textContent = end + suffix;
+                    }
+                    clearInterval(timer);
+                } else {
+                    if (suffix === '+' && end >= 1000) {
+                        element.textContent = Math.floor(current).toLocaleString() + suffix;
+                    } else {
+                        element.textContent = Math.floor(current) + suffix;
+                    }
+                }
+            }, 16);
+        }
+
+        const crisisStats = document.querySelector('.crisis-stats');
+        if (crisisStats) {
+            counterObserver.observe(crisisStats);
+        }
+
+        // Scroll animations
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        // Apply fade-in animation to sections
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            fadeObserver.observe(section);
+        });
+
+        // CTA button tracking
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                console.log('Program CTA clicked:', this.textContent.trim());
+            });
+        });
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.add('loaded');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Independent Prison Oversight | Praxis Initiative</title>
+    <meta name="description" content="Praxis Initiative advocates for independent oversight of Arizona's prison system with 34,500+ people in ADCRR. Establishing transparency and accountability through ombudsman oversight.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Miller+Text:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #000080;
+            --maroon: #800000;
+            --teal: #008080;
+            --purple-accent: #6A4C93;
+            --light-purple: #A06CD5;
+            --off-white: #FAFAFA;
+            --dark-gray: #2C2C2C;
+            --medium-gray: #666666;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            overflow-x: hidden;
+        }
+
+        /* Navigation (same as homepage) */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: 'Miller Text', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--navy);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .logo:hover {
+            color: var(--teal);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-item a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-item a:hover,
+        .nav-item a.active {
+            color: var(--teal);
+        }
+
+        .nav-item a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: var(--teal);
+            transition: width 0.3s ease;
+        }
+
+        .nav-item a:hover::after,
+        .nav-item a.active::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--navy);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--navy);
+        }
+
+        .nav-cta:hover {
+            background: transparent;
+            color: var(--navy);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 128, 0.3);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--navy);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 70vh;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--purple-accent) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            margin-top: 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.1)" points="0,0 1000,300 1000,1000 0,700"/></svg>');
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+            position: relative;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-family: 'Miller Text', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .crisis-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .crisis-stat {
+            text-align: center;
+        }
+
+        .crisis-number {
+            display: block;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--teal);
+            margin-bottom: 0.5rem;
+        }
+
+        .crisis-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .content-section {
+            padding: 6rem 0;
+        }
+
+        .section-title {
+            font-family: 'Miller Text', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--navy);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--medium-gray);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+            margin: 4rem 0;
+        }
+
+        .content-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .content-text h3 {
+            font-family: 'Miller Text', serif;
+            font-size: 1.8rem;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .content-text h3:first-child {
+            margin-top: 0;
+        }
+
+        .content-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, var(--navy), var(--teal));
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .highlight-box h3 {
+            font-family: 'Miller Text', serif;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight-box p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        /* Problem Section */
+        .problem-section {
+            background: var(--off-white);
+            padding: 6rem 0;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .problem-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border-left: 5px solid var(--maroon);
+        }
+
+        .problem-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .problem-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .problem-card h3 {
+            font-family: 'Miller Text', serif;
+            font-size: 1.5rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        .problem-card p {
+            color: var(--medium-gray);
+            line-height: 1.6;
+        }
+
+        /* Solution Section */
+        .solution-section {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .solution-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .solution-feature {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .solution-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--teal);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .solution-feature h4 {
+            font-family: 'Miller Text', serif;
+            font-size: 1.3rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        .solution-feature p {
+            color: var(--medium-gray);
+            line-height: 1.6;
+        }
+
+        /* Impact Section */
+        .impact-section {
+            background: linear-gradient(135deg, var(--navy), var(--maroon));
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .impact-item h4 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--teal);
+        }
+
+        .impact-item p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--off-white);
+            padding: 6rem 0;
+            text-align: center;
+        }
+
+        .cta-content h2 {
+            font-family: 'Miller Text', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-content p {
+            font-size: 1.2rem;
+            color: var(--medium-gray);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            margin: 0 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--navy);
+            color: white;
+            border: 2px solid var(--navy);
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--navy);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 128, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--teal);
+            border: 2px solid var(--teal);
+        }
+
+        .btn-secondary:hover {
+            background: var(--teal);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 128, 128, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-gray);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h4 {
+            font-family: 'Miller Text', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--teal);
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            line-height: 1.6;
+        }
+
+        .footer-section a:hover {
+            color: var(--teal);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #444;
+            padding-top: 2rem;
+            text-align: center;
+            color: #999;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .crisis-stats {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .hero {
+                height: 60vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo">Praxis Initiative</a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="/about">About</a></li>
+                <li class="nav-item"><a href="/programs" class="active">Programs</a></li>
+                <li class="nav-item"><a href="/research">Research</a></li>
+                <li class="nav-item"><a href="/resources">Resources</a></li>
+                <li class="nav-item"><a href="/action-center">Take Action</a></li>
+                <li class="nav-item"><a href="/contact-us">Contact</a></li>
+            </ul>
+            <a href="/donate" class="nav-cta">Donate</a>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Independent Prison Oversight</h1>
+            <p class="hero-subtitle">Establishing transparency, accountability, and protection of human rights through independent correctional ombudsman oversight</p>
+            
+            <div class="crisis-stats">
+                <div class="crisis-stat">
+                    <span class="crisis-number">34,500+</span>
+                    <span class="crisis-label">People in ADCRR with zero independent oversight</span>
+                </div>
+                <div class="crisis-stat">
+                    <span class="crisis-number">$1.5B</span>
+                    <span class="crisis-label">Annual taxpayer cost without accountability</span>
+                </div>
+                <div class="crisis-stat">
+                    <span class="crisis-number">0</span>
+                    <span class="crisis-label">Independent oversight bodies monitoring Arizona prisons</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="content-section">
+        <div class="container">
+            <div class="content-grid">
+                <div class="content-text fade-in">
+                    <h3>The Critical Need for Oversight</h3>
+                    <p>Arizona's criminal legal system faces profound challenges that demand urgent attention and systematic reform. With zero independent oversight bodies monitoring Arizona's state prisons, transparency and accountability are critically lacking, allowing harmful conditions and ineffective rehabilitation efforts to persist unchecked.</p>
+                    
+                    <p>This absence of oversight contributes to a corrections system that costs Arizona taxpayers over $1.5 billion annually while failing to meet basic standards of transparency and effectiveness.</p>
+
+                    <h3>Constitutional Violations</h3>
+                    <p>The ongoing Jensen v. Shinn lawsuit demonstrates the urgent need for independent oversight, with 34,500+ people in ADCRR experiencing constitutional violations related to healthcare, safety, and basic human dignity.</p>
+                </div>
+
+                <div class="highlight-box fade-in">
+                    <h3>Our Mission</h3>
+                    <p>Praxis Initiative advocates for independent, external oversight of Arizona's prison system to ensure transparency, accountability, and the protection of human rights through a fully empowered correctional ombudsman.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem-section">
+        <div class="container">
+            <h2 class="section-title fade-in">Systemic Problems Without Oversight</h2>
+            <p class="section-subtitle fade-in">The absence of independent monitoring creates conditions that harm incarcerated individuals, staff, and communities</p>
+
+            <div class="problem-grid">
+                <div class="problem-card fade-in">
+                    <span class="problem-icon">⚕️</span>
+                    <h3>Healthcare Failures</h3>
+                    <p>Medical neglect and inadequate healthcare delivery leading to preventable deaths and constitutional violations across Arizona's prison system.</p>
+                </div>
+
+                <div class="problem-card fade-in">
+                    <span class="problem-icon">🚨</span>
+                    <h3>Staff Misconduct</h3>
+                    <p>Lack of independent investigation and accountability for correctional officer misconduct, contraband trafficking, and abuse of authority.</p>
+                </div>
+
+                <div class="problem-card fade-in">
+                    <span class="problem-icon">💰</span>
+                    <h3>Financial Waste</h3>
+                    <p>Costly litigation, settlements, and inefficient operations drain taxpayer resources without improving outcomes or safety.</p>
+                </div>
+
+                <div class="problem-card fade-in">
+                    <span class="problem-icon">📊</span>
+                    <h3>Data Transparency</h3>
+                    <p>Limited public access to performance data, incident reports, and outcome measurements prevents informed policy decisions.</p>
+                </div>
+
+                <div class="problem-card fade-in">
+                    <span class="problem-icon">🔄</span>
+                    <h3>Recidivism Rates</h3>
+                    <p>High reoffending rates indicate systemic failure to provide effective rehabilitation and reentry programming.</p>
+                </div>
+
+                <div class="problem-card fade-in">
+                    <span class="problem-icon">⚖️</span>
+                    <h3>Privatization Issues</h3>
+                    <p>Private prison operators operate with reduced oversight, creating perverse incentives and accountability gaps.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution-section">
+        <div class="container">
+            <h2 class="section-title fade-in">Independent Ombudsman Solution</h2>
+            <p class="section-subtitle fade-in">Proven oversight model that creates accountability, improves conditions, and protects taxpayer investment</p>
+
+            <div class="solution-features">
+                <div class="solution-feature fade-in">
+                    <div class="solution-icon">🔍</div>
+                    <h4>Investigation Authority</h4>
+                    <p>Independent power to investigate complaints, conduct facility inspections, and review policies without interference from corrections officials.</p>
+                </div>
+
+                <div class="solution-feature fade-in">
+                    <div class="solution-icon">📋</div>
+                    <h4>Public Reporting</h4>
+                    <p>Regular public reports on conditions, incidents, and systemic issues with specific recommendations for improvement.</p>
+                </div>
+
+                <div class="solution-feature fade-in">
+                    <div class="solution-icon">👥</div>
+                    <h4>Community Access</h4>
+                    <p>Direct communication channels for incarcerated individuals, families, and advocates to report concerns and seek assistance.</p>
+                </div>
+
+                <div class="solution-feature fade-in">
+                    <div class="solution-icon">📈</div>
+                    <h4>Performance Monitoring</h4>
+                    <p>Continuous oversight of key performance indicators including safety, healthcare delivery, and rehabilitation outcomes.</p>
+                </div>
+
+                <div class="solution-feature fade-in">
+                    <div class="solution-icon">🤝</div>
+                    <h4>Stakeholder Coordination</h4>
+                    <p>Bridge between corrections officials, legislative oversight, and community interests to ensure balanced accountability.</p>
+                </div>
+
+                <div class="solution-feature fade-in">
+                    <div class="solution-icon">💡</div>
+                    <h4>Policy Recommendations</h4>
+                    <p>Evidence-based recommendations for systemic improvements, cost savings, and effective rehabilitation programming.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section class="impact-section">
+        <div class="container">
+            <h2 class="section-title fade-in">Expected Impact of Independent Oversight</h2>
+            <p class="section-subtitle fade-in">Evidence from other states demonstrates significant improvements when independent oversight is implemented</p>
+
+            <div class="impact-grid">
+                <div class="impact-item fade-in">
+                    <h4>↓30%</h4>
+                    <p>Reduction in serious incidents and constitutional violations</p>
+                </div>
+
+                <div class="impact-item fade-in">
+                    <h4>↓25%</h4>
+                    <p>Decrease in litigation costs and settlement payments</p>
+                </div>
+
+                <div class="impact-item fade-in">
+                    <h4>↑40%</h4>
+                    <p>Improvement in healthcare delivery and outcomes</p>
+                </div>
+
+                <div class="impact-item fade-in">
+                    <h4>↑50%</h4>
+                    <p>Increase in staff accountability and professional standards</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content fade-in">
+                <h2>Support Independent Prison Oversight</h2>
+                <p>Join our campaign to establish comprehensive oversight of Arizona's prison system. Together, we can create transparency, accountability, and protection for the 34,500+ people in ADCRR.</p>
+                
+                <div style="margin-top: 2rem;">
+                    <a href="/action-center" class="btn btn-primary">Take Action</a>
+                    <a href="/donate" class="btn btn-secondary">Support Our Work</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Praxis Initiative</h4>
+                    <p>Transforming Arizona's criminal legal system through lived experience, evidence-based advocacy, and community-driven solutions.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Programs</h4>
+                    <ul class="footer-links">
+                        <li><a href="/independent-prison-oversight">Independent Prison Oversight</a></li>
+                        <li><a href="/criminal-legal-system-reform">Criminal Legal System Reform</a></li>
+                        <li><a href="/drug-use-risk-mitigation">Drug Policy & Overdose Prevention</a></li>
+                        <li><a href="/arts-in-prison">Arts in Prison</a></li>
+                        <li><a href="/returning-citizens-core-civics-and-advocacy-training">Civic Engagement Training</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Get Involved</h4>
+                    <ul class="footer-links">
+                        <li><a href="/donate">Donate</a></li>
+                        <li><a href="/action-center">Volunteer</a></li>
+                        <li><a href="/action-center">Newsletter</a></li>
+                        <li><a href="/contact-us">Contact Us</a></li>
+                        <li><a href="/about">About Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <p>Follow us for updates on criminal justice reform in Arizona</p>
+                    <div style="margin-top: 1rem;">
+                        <a href="#" style="color: var(--teal); margin-right: 1rem;">Facebook</a>
+                        <a href="#" style="color: var(--teal); margin-right: 1rem;">Twitter</a>
+                        <a href="#" style="color: var(--teal); margin-right: 1rem;">LinkedIn</a>
+                        <a href="#" style="color: var(--teal);">Instagram</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Praxis Initiative. All rights reserved. | Independent Prison Oversight</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 2px 30px rgba(0, 0, 0, 0.15)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            }
+        });
+
+        // Mobile menu functionality
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('.nav-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Add mobile menu styles
+        const mobileStyles = `
+            @media (max-width: 768px) {
+                .nav-menu.active {
+                    display: flex;
+                    flex-direction: column;
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    right: 0;
+                    background: white;
+                    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+                    padding: 1rem;
+                    gap: 1rem;
+                }
+            }
+        `;
+
+        const styleSheet = document.createElement('style');
+        styleSheet.textContent = mobileStyles;
+        document.head.appendChild(styleSheet);
+    </script>
+</body>
+</html>

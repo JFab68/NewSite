@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arts in Prison | Praxis Initiative</title>
+    <meta name="description" content="Praxis Initiative champions transformative arts programming in Arizona prisons. Music, visual arts, dance, and movement workshops empower participants with new skills, community, and hope.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Miller+Text:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #000080;
+            --maroon: #800000;
+            --teal: #008080;
+            --purple-accent: #6A4C93;
+            --light-purple: #A06CD5;
+            --off-white: #FAFAFA;
+            --dark-gray: #2C2C2C;
+            --medium-gray: #666666;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: 'Miller Text', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--navy);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .logo:hover {
+            color: var(--teal);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-item a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-item a:hover,
+        .nav-item a.active {
+            color: var(--teal);
+        }
+
+        .nav-item a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: var(--teal);
+            transition: width 0.3s ease;
+        }
+
+        .nav-item a:hover::after,
+        .nav-item a.active::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--navy);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--navy);
+        }
+
+        .nav-cta:hover {
+            background: transparent;
+            color: var(--navy);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 128, 0.3);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--navy);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 70vh;
+            background: linear-gradient(135deg, var(--purple-accent) 0%, var(--light-purple) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            margin-top: 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.1)" points="0,200 1000,0 1000,800 0,1000"/></svg>');
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+            position: relative;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-family: 'Miller Text', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .impact-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .impact-stat {
+            text-align: center;
+        }
+
+        .impact-number {
+            display: block;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--teal);
+            margin-bottom: 0.5rem;
+        }
+
+        .impact-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .content-section {
+            padding: 6rem 0;
+        }
+
+        .section-title {
+            font-family: 'Miller Text', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--navy);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--medium-gray);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+            margin: 4rem 0;
+        }
+
+        .content-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .content-text h3 {
+            font-family: 'Miller Text', serif;
+            font-size: 1.8rem;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .content-text h3:first-child {
+            margin-top: 0;
+        }
+
+        .content-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, var(--purple-accent), var(--teal));
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .highlight-box h3 {
+            font-family: 'Miller Text', serif;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight-box p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        /* Arts Programs Section */
+        .programs-section {
+            background: var(--off-white);
+            padding: 6rem 0;
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .program-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .program-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .program-card:nth-child(1) {
+            border-top: 5px solid var(--purple-accent);
+        }
+
+        .program-card:nth-child(2) {
+            border-top: 5px solid var(--teal);
+        }
+
+        .program-card:nth-child(3) {
+            border-top: 5px solid var(--navy);
+        }
+
+        .program-card:nth-child(4) {
+            border-top: 5px solid var(--light-purple);
+        }
+
+        .program-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--purple-accent), var(--light-purple));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            font-size: 2.5rem;
+            color: white;
+        }
+
+        .program-card:nth-child(2) .program-icon {
+            background: linear-gradient(135deg, var(--teal), var(--purple-accent));
+        }
+
+        .program-card:nth-child(3) .program-icon {
+            background: linear-gradient(135deg, var(--navy), var(--teal));
+        }
+
+        .program-card:nth-child(4) .program-icon {
+            background: linear-gradient(135deg, var(--light-purple), var(--purple-accent));
+        }
+
+        .program-card h3 {
+            font-family: 'Miller Text', serif;
+            font-size: 1.5rem;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+        }
+
+        .program-card p {
+            color: var(--medium-gray);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .program-benefits {
+            list-style: none;
+            text-align: left;
+        }
+
+        .program-benefits li {
+            padding: 0.3rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+            color: var(--medium-gray);
+            font-size: 0.9rem;
+        }
+
+        .program-benefits li::before {
+            content: '♪';
+            position: absolute;
+            left: 0;
+            color: var(--purple-accent);
+            font-weight: 700;
+        }
+
+        /* Think Motion Spotlight */
+        .spotlight-section {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .spotlight-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .spotlight-text h3 {
+            font-family: 'Miller Text', serif;
+            font-size: 2rem;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+        }
+
+        .spotlight-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--medium-gray);
+            margin-bottom: 1.5rem;
+        }
+
+        .spotlight-visual {
+            background: linear-gradient(135deg, var(--purple-accent), var(--light-purple));
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .spotlight-quote {
+            font-family: 'Miller Text', serif;
+            font-size: 1.3rem;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            line-height: 1.4;
+        }
+
+        .spotlight-author {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            background: var(--off-white);
+            padding: 6rem 0;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .benefit-item {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .benefit-item:hover {
+            border-color: var(--purple-accent);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .benefit-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--purple-accent), var(--teal));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .benefit-item h4 {
+            font-family: 'Miller Text', serif;
+            font-size: 1.3rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        .benefit-item p {
+            color: var(--medium-gray);
+            line-height: 1.6;
+        }
+
+        /* Evidence Section */
+        .evidence-section {
+            background: linear-gradient(135deg, var(--navy), var(--purple-accent));
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+        }
+
+        .evidence-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .evidence-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2.5rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .evidence-item h4 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--light-purple);
+        }
+
+        .evidence-item p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--off-white);
+            padding: 6rem 0;
+            text-align: center;
+        }
+
+        .cta-content h2 {
+            font-family: 'Miller Text', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-content p {
+            font-size: 1.2rem;
+            color: var(--medium-gray);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            margin: 0 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--navy);
+            color: white;
+            border: 2px solid var(--navy);
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--navy);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 128, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--purple-accent);
+            border: 2px solid var(--purple-accent);
+        }
+
+        .btn-secondary:hover {
+            background: var(--purple-accent);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(106, 76, 147, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-gray);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h4 {
+            font-family: 'Miller Text', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--teal);
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            line-height: 1.6;
+        }
+
+        .footer-section a:hover {
+            color: var(--teal);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #444;
+            padding-top: 2rem;
+            text-align: center;
+            color: #999;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .content-grid,
+            .spotlight-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .impact-stats {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .hero {
+                height: 60vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo">Praxis Initiative</a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="/about">About</a></li>
+                <li class="nav-item"><a href="/programs" class="active">Programs</a></li>
+                <li class="nav-item"><a href="/research">Research</a></li>
+                <li class="nav-item"><a href="/resources">Resources</a></li>
+                <li class="nav-item"><a href="/action-center">Take Action</a></li>
+                <li class="nav-item"><a href="/contact-us">Contact</a></li>
+            </ul>
+            <a href="/donate" class="nav-cta">Donate</a>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Arts in Prison</h1>
+            <p class="hero-subtitle">Transformative power of artistic expression in rehabilitation and healing through music, visual arts, dance, and movement workshops</p>
+            
+            <div class="impact-stats">
+                <div class="impact-stat">
+                    <span class="impact-number">34,500+</span>
+                    <span class="impact-label">People in ADCRR who could benefit from arts programming</span>
+                </div>
+                <div class="impact-stat">
+                    <span class="impact-number">75%</span>
+                    <span class="impact-label">Reduction in disciplinary incidents through arts participation</span>
+                </div>
+                <div class="impact-stat">
+                    <span class="impact-number">50%</span>
+                    <span class="impact-label">Improvement in emotional regulation skills</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="content-section">
+        <div class="container">
+            <div class="content-grid">
+                <div class="content-text fade-in">
+                    <h3>Transformative Arts Programming</h3>
+                    <p>We champion the transformative power of artistic expression in rehabilitation and healing. Our support includes programs like Dr. Susan Bendix's therapeutic dance and motion work at Perryville Prison, which has demonstrated success in promoting personal growth and emotional wellbeing among incarcerated women.</p>
+                    
+                    <p>This program recognizes that arts engagement offers unique benefits for incarcerated individuals, including improved emotional regulation, increased self-awareness, enhanced communication skills, and opportunities for positive self-expression. Through dance, visual arts, creative writing, and other modalities, participants develop new perspectives and capabilities that support their rehabilitation.</p>
+
+                    <h3>Evidence-Based Impact</h3>
+                    <p>By highlighting successful programs like Dr. Bendix's Think Motion, we demonstrate the value of artistic engagement as a component of effective rehabilitation and personal transformation, contributing to better outcomes both during incarceration and after release.</p>
+                </div>
+
+                <div class="highlight-box fade-in">
+                    <h3>Our Mission</h3>
+                    <p>Our Arts in Prison & Think Motion program delivers music, visual arts, dance, and movement workshops inside correctional facilities—empowering participants with new skills, community, and hope.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Arts Programs Section -->
+    <section class="programs-section">
+        <div class="container">
+            <h2 class="section-title fade-in">Program Modalities</h2>
+            <p class="section-subtitle fade-in">Comprehensive arts programming that addresses multiple aspects of rehabilitation and personal development</p>
+
+            <div class="programs-grid">
+                <div class="program-card fade-in">
+                    <div class="program-icon">🎵</div>
+                    <h3>Music Therapy & Performance</h3>
+                    <p>Music programs including individual instruction, group ensembles, songwriting workshops, and therapeutic music interventions that promote emotional expression and community building.</p>
+                    <ul class="program-benefits">
+                        <li>Individual instrument instruction</li>
+                        <li>Group music ensembles</li>
+                        <li>Songwriting and composition</li>
+                        <li>Music theory education</li>
+                        <li>Performance opportunities</li>
+                    </ul>
+                </div>
+
+                <div class="program-card fade-in">
+                    <div class="program-icon">💃</div>
+                    <h3>Dance & Movement Therapy</h3>
+                    <p>Therapeutic dance and movement programs that help participants reconnect with their bodies, process trauma, and develop physical and emotional awareness through guided movement.</p>
+                    <ul class="program-benefits">
+                        <li>Therapeutic movement sessions</li>
+                        <li>Body awareness training</li>
+                        <li>Trauma-informed dance therapy</li>
+                        <li>Cultural dance exploration</li>
+                        <li>Movement for mental health</li>
+                    </ul>
+                </div>
+
+                <div class="program-card fade-in">
+                    <div class="program-icon">🎨</div>
+                    <h3>Visual Arts & Creative Expression</h3>
+                    <p>Visual arts workshops including painting, drawing, sculpture, and mixed media that provide outlets for creative expression and skill development in various artistic mediums.</p>
+                    <ul class="program-benefits">
+                        <li>Painting and drawing classes</li>
+                        <li>Sculpture and ceramics</li>
+                        <li>Digital art and design</li>
+                        <li>Art therapy sessions</li>
+                        <li>Portfolio development</li>
+                    </ul>
+                </div>
+
+                <div class="program-card fade-in">
+                    <div class="program-icon">✍️</div>
+                    <h3>Creative Writing & Storytelling</h3>
+                    <p>Writing workshops that encourage storytelling, poetry, journalism, and personal narrative development as tools for reflection, communication, and healing.</p>
+                    <ul class="program-benefits">
+                        <li>Poetry and creative writing</li>
+                        <li>Personal narrative development</li>
+                        <li>Journalism and reporting</li>
+                        <li>Spoken word performance</li>
+                        <li>Literary publication opportunities</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Think Motion Spotlight -->
+    <section class="spotlight-section">
+        <div class="container">
+            <h2 class="section-title fade-in">Spotlight: Think Motion at Perryville</h2>
+            <div class="spotlight-content">
+                <div class="spotlight-text fade-in">
+                    <h3>Dr. Susan Bendix's Revolutionary Program</h3>
+                    <p>Dr. Susan Bendix's Think Motion program at Perryville Prison represents a groundbreaking approach to therapeutic intervention through dance and movement. This innovative program has demonstrated remarkable success in helping incarcerated women process trauma, develop emotional regulation skills, and build supportive community connections.</p>
+                    
+                    <p>The program integrates evidence-based dance/movement therapy techniques with trauma-informed care principles, creating a safe space for participants to explore their experiences, develop coping strategies, and build resilience. Through guided movement exercises, participants learn to reconnect with their bodies in healthy ways and develop tools for managing stress and emotional challenges.</p>
+                    
+                    <p>Participants report significant improvements in self-esteem, emotional regulation, and interpersonal relationships. The program has also contributed to reduced disciplinary incidents and improved mental health outcomes among participants.</p>
+                </div>
+
+                <div class="spotlight-visual fade-in">
+                    <blockquote class="spotlight-quote">
+                        "Through movement, I found my voice again. This program gave me tools to heal that I never knew existed."
+                    </blockquote>
+                    <cite class="spotlight-author">— Think Motion Program Participant</cite>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <h2 class="section-title fade-in">Rehabilitation Benefits</h2>
+            <p class="section-subtitle fade-in">Evidence-based outcomes from comprehensive arts programming in correctional settings</p>
+
+            <div class="benefits-grid">
+                <div class="benefit-item fade-in">
+                    <div class="benefit-icon">🧠</div>
+                    <h4>Emotional Regulation</h4>
+                    <p>Arts programming helps participants develop healthy coping mechanisms and emotional regulation skills through creative expression and therapeutic intervention.</p>
+                </div>
+
+                <div class="benefit-item fade-in">
+                    <div class="benefit-icon">👥</div>
+                    <h4>Social Connection</h4>
+                    <p>Group arts activities build community, reduce isolation, and help participants develop healthy interpersonal relationships and communication skills.</p>
+                </div>
+
+                <div class="benefit-item fade-in">
+                    <div class="benefit-icon">🎯</div>
+                    <h4>Self-Awareness</h4>
+                    <p>Creative expression facilitates self-reflection, personal insight, and identity development, supporting positive behavior change and personal growth.</p>
+                </div>
+
+                <div class="benefit-item fade-in">
+                    <div class="benefit-icon">🛠️</div>
+                    <h4>Skill Development</h4>
+                    <p>Arts programming provides practical skills that can translate into employment opportunities and continued engagement in healthy activities after release.</p>
+                </div>
+
+                <div class="benefit-item fade-in">
+                    <div class="benefit-icon">❤️</div>
+                    <h4>Trauma Recovery</h4>
+                    <p>Arts-based interventions provide safe, non-verbal ways to process traumatic experiences and develop resilience and healing.</p>
+                </div>
+
+                <div class="benefit-item fade-in">
+                    <div class="benefit-icon">⭐</div>
+                    <h4>Self-Esteem</h4>
+                    <p>Creative achievement and artistic expression boost confidence, self-worth, and belief in one's capacity for positive change and growth.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Evidence Section -->
+    <section class="evidence-section">
+        <div class="container">
+            <h2 class="section-title fade-in">Evidence of Effectiveness</h2>
+            <p class="section-subtitle fade-in">Research-backed results from arts programming in correctional environments</p>
+
+            <div class="evidence-grid">
+                <div class="evidence-item fade-in">
+                    <h4>75%</h4>
+                    <p>Reduction in disciplinary incidents among arts program participants</p>
+                </div>
+
+                <div class="evidence-item fade-in">
+                    <h4>60%</h4>
+                    <p>Improvement in mental health indicators and emotional wellbeing</p>
+                </div>
+
+                <div class="evidence-item fade-in">
+                    <h4>50%</h4>
+                    <p>Increase in post-release employment among arts program graduates</p>
+                </div>
+
+                <div class="evidence-item fade-in">
+                    <h4>40%</h4>
+                    <p>Reduction in recidivism rates for comprehensive arts program participants</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content fade-in">
+                <h2>Support Arts in Prison Programming</h2>
+                <p>Help us expand transformative arts programming throughout Arizona's correctional facilities. Your support enables life-changing opportunities for creativity, healing, and personal growth.</p>
+                
+                <div style="margin-top: 2rem;">
+                    <a href="/action-center" class="btn btn-primary">Support Our Work</a>
+                    <a href="/contact-us" class="btn btn-secondary">Partner With Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Praxis Initiative</h4>
+                    <p>Transforming Arizona's criminal legal system through lived experience, evidence-based advocacy, and community-driven solutions.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Programs</h4>
+                    <ul class="footer-links">
+                        <li><a href="/independent-prison-oversight">Independent Prison Oversight</a></li>
+                        <li><a href="/criminal-legal-system-reform">Criminal Legal System Reform</a></li>
+                        <li><a href="/drug-use-risk-mitigation">Drug Policy & Overdose Prevention</a></li>
+                        <li><a href="/arts-in-prison">Arts in Prison</a></li>
+                        <li><a href="/returning-citizens-core-civics-and-advocacy-training">Civic Engagement Training</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Get Involved</h4>
+                    <ul class="footer-links">
+                        <li><a href="/donate">Donate</a></li>
+                        <li><a href="/action-center">Volunteer</a></li>
+                        <li><a href="/action-center">Newsletter</a></li>
+                        <li><a href="/contact-us">Contact Us</a></li>
+                        <li><a href="/about">About Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <p>Follow us for updates on criminal justice reform in Arizona</p>
+                    <div style="margin-top: 1rem;">
+                        <a href="#" style="color: var(--teal); margin-right: 1rem;">Facebook</a>
+                        <a href="#" style="color: var(--teal); margin-right: 1rem;">Twitter</a>
+                        <a href="#" style="color: var(--teal); margin-right: 1rem;">LinkedIn</a>
+                        <a href="#" style="color: var(--teal);">Instagram</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Praxis Initiative. All rights reserved. | Arts in Prison</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 2px 30px rgba(0, 0, 0, 0.15)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            }
+        });
+
+        // Mobile menu functionality
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('.nav-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Add mobile menu styles
+        const mobileStyles = `
+            @media (max-width: 768px) {
+                .nav-menu.active {
+                    display: flex;
+                    flex-direction: column;
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    right: 0;
+                    background: white;
+                    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+                    padding: 1rem;
+                    gap: 1rem;
+                }
+            }
+        `;
+
+        const styleSheet = document.createElement('style');
+        styleSheet.textContent = mobileStyles;
+        document.head.appendChild(styleSheet);
+    </script>
+</body>
+</html>

@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News & Resources - Praxis Initiative</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-navy: #000080;
+            --secondary-maroon: #800000;
+            --white: #FFFFFF;
+            --light-gray: #F8F9FA;
+            --light-blue: #E8F0FF;
+            --dark-gray: #333333;
+            --medium-gray: #666666;
+            --light-purple: #E8E3F3;
+            --success-green: #28a745;
+            --warning-orange: #fd7e14;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-sm {
+            padding: 40px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: var(--primary-navy);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: #000066;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary-navy);
+            border: 2px solid var(--primary-navy);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-navy);
+            color: var(--white);
+        }
+
+        .section-label {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--primary-navy);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-navy);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: var(--primary-navy);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-navy) 0%, #4A0E4E 100%);
+            color: var(--white);
+            padding: 160px 0 80px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+
+        /* Filter Bar */
+        .filter-bar {
+            background: var(--white);
+            padding: 30px 0;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 80px;
+            z-index: 100;
+        }
+
+        .filter-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .filter-tabs {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .filter-tab {
+            padding: 10px 20px;
+            border: 2px solid var(--light-gray);
+            border-radius: 25px;
+            background: var(--light-gray);
+            color: var(--dark-gray);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .filter-tab.active,
+        .filter-tab:hover {
+            background: var(--primary-navy);
+            color: var(--white);
+            border-color: var(--primary-navy);
+        }
+
+        .search-box {
+            display: flex;
+            gap: 10px;
+        }
+
+        .search-box input {
+            padding: 10px 15px;
+            border: 2px solid var(--light-gray);
+            border-radius: 25px;
+            font-size: 14px;
+            width: 250px;
+        }
+
+        .search-box button {
+            padding: 10px 20px;
+            background: var(--primary-navy);
+            color: var(--white);
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .search-box button:hover {
+            background: #000066;
+        }
+
+        /* Featured Article */
+        .featured {
+            background: var(--white);
+        }
+
+        .featured-article {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .featured-image {
+            height: 400px;
+            background: linear-gradient(135deg, var(--primary-navy), #4A0E4E);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 18px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: var(--warning-orange);
+            color: var(--white);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .featured-content h2 {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--primary-navy);
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .featured-meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: var(--medium-gray);
+        }
+
+        .featured-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .featured-description {
+            font-size: 16px;
+            color: var(--medium-gray);
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        /* Content Grid */
+        .content-grid {
+            background: var(--light-gray);
+        }
+
+        .content-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .content-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .content-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-image {
+            height: 200px;
+            background: var(--medium-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 14px;
+            text-align: center;
+            position: relative;
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .badge-whitepaper {
+            background: var(--primary-navy);
+            color: var(--white);
+        }
+
+        .badge-blog {
+            background: var(--success-green);
+            color: var(--white);
+        }
+
+        .badge-article {
+            background: var(--warning-orange);
+            color: var(--white);
+        }
+
+        .badge-report {
+            background: var(--secondary-maroon);
+            color: var(--white);
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--primary-navy);
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .card-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            font-size: 12px;
+            color: var(--medium-gray);
+        }
+
+        .card-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .card-excerpt {
+            font-size: 14px;
+            color: var(--medium-gray);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .read-time {
+            font-size: 12px;
+            color: var(--medium-gray);
+            margin-left: auto;
+        }
+
+        /* Newsletter CTA */
+        .newsletter-cta {
+            background: var(--primary-navy);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .newsletter-cta h2 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .newsletter-cta p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+
+        .newsletter-form {
+            max-width: 400px;
+            margin: 0 auto;
+            display: flex;
+            gap: 15px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .newsletter-form button {
+            padding: 15px 30px;
+            background: var(--success-green);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            background: #218838;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background: #000;
+            color: var(--medium-gray);
+            padding: 40px 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .footer-links a {
+            color: var(--medium-gray);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--medium-gray);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background: var(--primary-navy);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .featured-article {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .featured-content h2 {
+                font-size: 28px;
+            }
+
+            .filter-content {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .filter-tabs {
+                justify-content: center;
+            }
+
+            .search-box {
+                justify-content: center;
+            }
+
+            .search-box input {
+                width: 200px;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            h2 {
+                font-size: 36px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .content-items {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+
+            .btn {
+                padding: 12px 24px;
+                font-size: 14px;
+            }
+        }
+
+        /* Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Loading states */
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--medium-gray);
+        }
+
+        .no-results i {
+            font-size: 48px;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">@</div>
+                <nav class="nav-menu">
+                    <a href="index.html">Home</a>
+                    <a href="programs.html">Programs</a>
+                    <a href="about.html">About</a>
+                    <a href="action-center.html">Action Center</a>
+                    <a href="news.html" class="active">News</a>
+                    <a href="partners.html">Partners</a>
+                </nav>
+                <a href="donate.html" class="btn btn-primary">Donate Now</a>
+                <button class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>News & Resources</h1>
+            <p>Insights and stories from the frontlines of criminal legal system reform. Stay informed with our latest research, analysis, and advocacy updates.</p>
+        </div>
+    </section>
+
+    <!-- Filter Bar -->
+    <section class="filter-bar">
+        <div class="container">
+            <div class="filter-content">
+                <div class="filter-tabs">
+                    <a href="#" class="filter-tab active" data-filter="all">All Content</a>
+                    <a href="#" class="filter-tab" data-filter="whitepaper">White Papers</a>
+                    <a href="#" class="filter-tab" data-filter="blog">Blog Posts</a>
+                    <a href="#" class="filter-tab" data-filter="article">Articles</a>
+                    <a href="#" class="filter-tab" data-filter="report">Reports</a>
+                </div>
+                <div class="search-box">
+                    <input type="text" placeholder="Search news and resources..." id="searchInput">
+                    <button type="button" id="searchBtn"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Article -->
+    <section class="featured section">
+        <div class="container">
+            <div class="section-label">Featured</div>
+            <div class="featured-article">
+                <div class="featured-image">
+                    <div class="featured-badge">New Report</div>
+                    <i class="fas fa-file-alt" style="font-size: 60px;"></i>
+                </div>
+                <div class="featured-content">
+                    <h2>Decarceration Strategies That Work: A 2025 Policy Review</h2>
+                    <div class="featured-meta">
+                        <span><i class="far fa-calendar-alt"></i> June 15, 2025</span>
+                        <span><i class="far fa-user"></i> Dr. Maya Chen</span>
+                        <span><i class="far fa-file-pdf"></i> PDF, 2.4MB</span>
+                    </div>
+                    <p class="featured-description">
+                        Our latest comprehensive analysis examines successful decarceration initiatives across 12 states, identifying key policy interventions that reduced prison populations without compromising public safety. The report includes actionable recommendations for legislators and community organizations.
+                    </p>
+                    <div class="card-actions">
+                        <a href="#" class="btn btn-primary">Read Report</a>
+                        <a href="#" class="btn btn-outline">Download PDF</a>
+                        <span class="read-time"><i class="far fa-clock"></i> 15 min read</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Grid -->
+    <section class="content-grid section-sm">
+        <div class="container">
+            <div class="content-items">
+                <!-- Whitepaper Card -->
+                <div class="content-card">
+                    <div class="card-image">
+                        <div class="card-badge badge-whitepaper">Whitepaper</div>
+                        <i class="fas fa-file-contract" style="font-size: 40px;"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Bail Reform: Economic Impacts on Local Communities</h3>
+                        <div class="card-meta">
+                            <span><i class="far fa-calendar-alt"></i> May 28, 2025</span>
+                            <span><i class="far fa-user"></i> Research Team</span>
+                        </div>
+                        <p class="card-excerpt">
+                            Quantitative analysis of how bail reform policies affected local economies in 8 jurisdictions, with surprising findings about small business impacts.
+                        </p>
+                        <div class="card-actions">
+                            <a href="#" class="btn btn-outline">Read More</a>
+                            <span class="read-time"><i class="far fa-clock"></i> 8 min read</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Blog Card -->
+                <div class="content-card">
+                    <div class="card-image">
+                        <div class="card-badge badge-blog">Blog</div>
+                        <i class="fas fa-blog" style="font-size: 40px;"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Voices From Inside: A Mother's Story of Mandatory Minimums</h3>
+                        <div class="card-meta">
+                            <span><i class="far fa-calendar-alt"></i> May 15, 2025</span>
+                            <span><i class="far fa-user"></i> Jamila Washington</span>
+                        </div>
+                        <p class="card-excerpt">
+                            First-person account from a formerly incarcerated mother about how mandatory minimum sentencing tore her family apart and the reforms that could prevent similar tragedies.
+                        </p>
+                        <div class="card-actions">
+                            <a href="#" class="btn btn-outline">Read More</a>
+                            <span class="read-time"><i class="far fa-clock"></i> 6 min read</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Article Card -->
+                <div class="content-card">
+                    <div class="card-image">
+                        <div class="card-badge badge-article">Article</div>
+                        <i class="fas fa-newspaper" style="font-size: 40px;"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">How Restorative Justice Programs Reduce Recidivism by 43%</h3>
+                        <div class="card-meta">
+                            <span><i class="far fa-calendar-alt"></i> April 30, 2025</span>
+                            <span><i class="far fa-user"></i> Carlos Mendez</span>
+                        </div>
+                        <p class="card-excerpt">
+                            Case study of innovative restorative justice programs in Oakland showing dramatic reductions in repeat offenses and improved community relations.
+                        </p>
+                        <div class="card-actions">
+                            <a href="#" class="btn btn-outline">Read More</a>
+                            <span class="read-time"><i class="far fa-clock"></i> 7 min read</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Report Card -->
+                <div class="content-card">
+                    <div class="card-image">
+                        <div class="card-badge badge-report">Report</div>
+                        <i class="fas fa-chart-bar" style="font-size: 40px;"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">The Color of Justice 2025: Racial Disparities in Sentencing</h3>
+                        <div class="card-meta">
+                            <span><i class="far fa-calendar-alt"></i> April 22, 2025</span>
+                            <span><i class="far fa-user"></i> Equity Task Force</span>
+                        </div>
+                        <p class="card-excerpt">
+                            Our annual analysis reveals persistent racial disparities in sentencing outcomes, with new data on how implicit bias training for judges affects outcomes.
+                        </p>
+                        <div class="card-actions">
+                            <a href="#" class="btn btn-outline">Read More</a>
+                            <span class="read-time"><i class="far fa-clock"></i> 12 min read</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Whitepaper Card 2 -->
+                <div class="content-card">
+                    <div class="card-image">
+                        <div class="card-badge badge-whitepaper">Whitepaper</div>
+                        <i class="fas fa-balance-scale" style="font-size: 40px;"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Prosecutorial Discretion: Models for Reform</h3>
+                        <div class="card-meta">
+                            <span><i class="far fa-calendar-alt"></i> March 18, 2025</span>
+                            <span><i class="far fa-user"></i> Legal Reform Initiative</span>
+                        </div>
+                        <p class="card-excerpt">
+                            Examination of progressive prosecution models in 6 jurisdictions, with policy recommendations for reducing unnecessary incarceration through charging decisions.
+                        </p>
+                        <div class="card-actions">
+                            <a href="#" class="btn btn-outline">Read More</a>
+                            <span class="read-time"><i class="far fa-clock"></i> 10 min read</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Blog Card 2 -->
+                <div class="content-card">
+                    <div class="card-image">
+                        <div class="card-badge badge-blog">Blog</div>
+                        <i class="fas fa-users" style="font-size: 40px;"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Community Bail Funds: What Works and What Doesn't</h3>
+                        <div class="card-meta">
+                            <span><i class="far fa-calendar-alt"></i> February 28, 2025</span>
+                            <span><i class="far fa-user"></i> Priya Kapoor</span>
+                        </div>
+                        <p class="card-excerpt">
+                            Lessons learned from three years of operating a community bail fund in Chicago, including surprising findings about who benefits most from these programs.
+                        </p>
+                        <div class="card-actions">
+                            <a href="#" class="btn btn-outline">Read More</a>
+                            <span class="read-time"><i class="far fa-clock"></i> 5 min read</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter CTA -->
+    <section class="newsletter-cta section">
+        <div class="container">
+            <h2>Stay Updated</h2>
+            <p>Get our latest research, reports, and action alerts delivered straight to your inbox.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Your email address" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="contact.html">Contact Us</a>
+                    <a href="careers.html">Careers</a>
+                </div>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Filter Tabs
+        const filterTabs = document.querySelectorAll('.filter-tab');
+        
+        filterTabs.forEach(tab => {
+            tab.addEventListener('click', (e) => {
+                e.preventDefault();
+                filterTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                // Here you would filter content based on data-filter attribute
+            });
+        });
+
+        // Search Functionality
+        const searchBtn = document.getElementById('searchBtn');
+        const searchInput = document.getElementById('searchInput');
+        
+        searchBtn.addEventListener('click', () => {
+            const searchTerm = searchInput.value.trim();
+            if (searchTerm) {
+                // Here you would implement search functionality
+                console.log('Searching for:', searchTerm);
+            }
+        });
+
+        // Scroll Animation
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const checkVisibility = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('visible');
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', checkVisibility);
+        window.addEventListener('load', checkVisibility);
+
+        // Newsletter Form Submission
+        const newsletterForm = document.querySelector('.newsletter-form');
+        
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = newsletterForm.querySelector('input').value;
+            // Here you would handle the form submission
+            console.log('Subscribed email:', email);
+            newsletterForm.querySelector('input').value = '';
+            alert('Thank you for subscribing!');
+        });
+    </script>
+</body>
+</html>

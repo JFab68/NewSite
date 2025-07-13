@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Action Center - Praxis Initiative</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-navy: #000080;
+            --secondary-maroon: #800000;
+            --white: #FFFFFF;
+            --light-gray: #F8F9FA;
+            --light-blue: #E8F0FF;
+            --dark-gray: #333333;
+            --medium-gray: #666666;
+            --light-purple: #E8E3F3;
+            --success-green: #28a745;
+            --warning-orange: #fd7e14;
+            --urgent-red: #dc3545;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: var(--primary-navy);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: #000066;
+            transform: translateY(-2px);
+        }
+
+        .btn-success {
+            background: var(--success-green);
+            color: var(--white);
+        }
+
+        .btn-success:hover {
+            background: #218838;
+            transform: translateY(-2px);
+        }
+
+        .btn-urgent {
+            background: var(--urgent-red);
+            color: var(--white);
+            animation: pulse 2s infinite;
+        }
+
+        .btn-urgent:hover {
+            background: #c82333;
+            transform: translateY(-2px);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(220, 53, 69, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0); }
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-navy);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: var(--primary-navy);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-navy) 0%, #4A0E4E 100%);
+            color: var(--white);
+            padding: 160px 0 80px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .stat-item {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            opacity: 0.8;
+        }
+
+        /* Action Alerts Section */
+        .action-alerts {
+            background: var(--white);
+        }
+
+        .alerts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .alert-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border-left: 5px solid var(--primary-navy);
+            transition: transform 0.3s ease;
+        }
+
+        .alert-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .alert-card.urgent {
+            border-left-color: var(--urgent-red);
+            background: linear-gradient(135deg, #fff 0%, #fff5f5 100%);
+        }
+
+        .alert-card.important {
+            border-left-color: var(--warning-orange);
+            background: linear-gradient(135deg, #fff 0%, #fff8f0 100%);
+        }
+
+        .alert-priority {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .priority-urgent {
+            background: var(--urgent-red);
+            color: var(--white);
+        }
+
+        .priority-important {
+            background: var(--warning-orange);
+            color: var(--white);
+        }
+
+        .priority-normal {
+            background: var(--success-green);
+            color: var(--white);
+        }
+
+        .alert-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--primary-navy);
+            margin-bottom: 10px;
+        }
+
+        .alert-date {
+            font-size: 14px;
+            color: var(--medium-gray);
+            margin-bottom: 15px;
+        }
+
+        .alert-description {
+            font-size: 16px;
+            color: var(--medium-gray);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .alert-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        /* Action Network Embeds */
+        .action-network-section {
+            background: var(--light-gray);
+        }
+
+        .action-embed {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 40px;
+            margin: 30px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .action-embed h3 {
+            font-size: 24px;
+            color: var(--primary-navy);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .embed-placeholder {
+            background: var(--light-blue);
+            padding: 60px;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px dashed var(--primary-navy);
+        }
+
+        .embed-placeholder i {
+            font-size: 48px;
+            color: var(--primary-navy);
+            margin-bottom: 20px;
+        }
+
+        .embed-placeholder h4 {
+            color: var(--primary-navy);
+            margin-bottom: 10px;
+        }
+
+        .embed-placeholder p {
+            color: var(--medium-gray);
+            font-size: 14px;
+        }
+
+        /* Volunteer Section */
+        .volunteer {
+            background: var(--white);
+        }
+
+        .volunteer-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .volunteer-form {
+            background: var(--light-gray);
+            padding: 40px;
+            border-radius: 12px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: var(--dark-gray);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: auto;
+        }
+
+        /* Newsletter Section */
+        .newsletter {
+            background: var(--primary-navy);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .newsletter h2 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .newsletter p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+
+        .newsletter-embed {
+            max-width: 500px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.1);
+            padding: 40px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Footer */
+        .footer {
+            background: #000;
+            color: var(--medium-gray);
+            padding: 40px 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .footer-links a {
+            color: var(--medium-gray);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--medium-gray);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background: var(--primary-navy);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+
+            .volunteer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .alert-actions {
+                justify-content: center;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            h2 {
+                font-size: 36px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+
+            .btn {
+                padding: 12px 24px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">@</div>
+                <nav class="nav-menu">
+                    <a href="index.html">Home</a>
+                    <a href="issues.html">Issues</a>
+                    <a href="programs.html">Programs</a>
+                    <a href="about.html">About</a>
+                    <a href="action-center.html" class="active">Action Center</a>
+                    <a href="news.html">News</a>
+                    <a href="partners.html">Partners</a>
+                    <a href="donate.html">Donate</a>
+                    <a href="contact.html">Contact</a>
+                </nav>
+                <a href="donate.html" class="btn btn-urgent">AMPLIFY YOUR IMPACT</a>
+                <button class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Take Action for Justice</h1>
+            <p>Join our movement to transform Arizona's criminal legal system. Your voice, your time, and your advocacy can create the change we need to see.</p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">5</span>
+                    <span class="stat-label">Active Campaigns</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">150+</span>
+                    <span class="stat-label">Active Volunteers</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">2,500+</span>
+                    <span class="stat-label">Newsletter Subscribers</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Action Alerts Section -->
+    <section class="action-alerts section">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 48px; color: var(--primary-navy); margin-bottom: 20px;">Current Action Alerts</h2>
+            <p style="text-align: center; margin-bottom: 60px; color: var(--medium-gray);">Take immediate action on critical issues affecting Arizona's criminal legal system.</p>
+            
+            <div class="alerts-grid">
+                <div class="alert-card urgent">
+                    <span class="alert-priority priority-urgent">Urgent</span>
+                    <h3 class="alert-title">Fund the Independent Correctional Oversight Office</h3>
+                    <div class="alert-date">Active Campaign - Ends July 31, 2025</div>
+                    <p class="alert-description">The Independent Correctional Oversight Office was approved but lacks funding. Contact your legislators to ensure this critical oversight mechanism receives the $1.5 million needed to start operations.</p>
+                    <div class="alert-actions">
+                        <a href="#contact-legislators" class="btn btn-urgent">Contact Legislators</a>
+                        <a href="#share-campaign" class="btn btn-primary">Share Campaign</a>
+                    </div>
+                </div>
+
+                <div class="alert-card important">
+                    <span class="alert-priority priority-important">Important</span>
+                    <h3 class="alert-title">Support Prison Healthcare Reform</h3>
+                    <div class="alert-date">Ongoing Campaign</div>
+                    <p class="alert-description">Arizona's prison healthcare system continues to face serious challenges. Join our advocacy for comprehensive healthcare reform and independent medical oversight.</p>
+                    <div class="alert-actions">
+                        <a href="#healthcare-petition" class="btn btn-primary">Sign Petition</a>
+                        <a href="#learn-more" class="btn btn-success">Learn More</a>
+                    </div>
+                </div>
+
+                <div class="alert-card">
+                    <span class="alert-priority priority-normal">Active</span>
+                    <h3 class="alert-title">Expand Harm Reduction Programs</h3>
+                    <div class="alert-date">Legislative Session 2025</div>
+                    <p class="alert-description">Support evidence-based harm reduction policies that save lives and reduce overdose deaths. Help us advocate for expanded access to life-saving interventions.</p>
+                    <div class="alert-actions">
+                        <a href="#harm-reduction-action" class="btn btn-primary">Take Action</a>
+                        <a href="#volunteer" class="btn btn-success">Volunteer</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Action Network Integration Section -->
+    <section class="action-network-section section">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 48px; color: var(--primary-navy); margin-bottom: 60px;">Quick Actions</h2>
+            
+            <!-- Contact Legislators Action -->
+            <div class="action-embed" id="contact-legislators">
+                <h3>📞 Contact Your Arizona Legislators</h3>
+                <div class="embed-placeholder">
+                    <i class="fas fa-phone"></i>
+                    <h4>Action Network Contact Form</h4>
+                    <p>Your Action Network "Contact Legislators" embed code goes here.<br>
+                    This form will auto-populate legislator contact info based on ZIP code.</p>
+                </div>
+                <!-- Replace placeholder with actual Action Network embed:
+                <div id="can-petition-area-contact-legislators" style="width: 100%"></div>
+                <script src="https://actionnetwork.org/widgets/v5/petition/your-petition-slug?format=js&source=widget"></script>
+                -->
+            </div>
+
+            <!-- Healthcare Petition -->
+            <div class="action-embed" id="healthcare-petition">
+                <h3>✊ Sign the Prison Healthcare Reform Petition</h3>
+                <div class="embed-placeholder">
+                    <i class="fas fa-file-signature"></i>
+                    <h4>Action Network Petition</h4>
+                    <p>Your Action Network petition embed code goes here.<br>
+                    Collects signatures for healthcare reform advocacy.</p>
+                </div>
+            </div>
+
+            <!-- Harm Reduction Action -->
+            <div class="action-embed" id="harm-reduction-action">
+                <h3>💊 Support Harm Reduction Legislation</h3>
+                <div class="embed-placeholder">
+                    <i class="fas fa-heart"></i>
+                    <h4>Action Network Email Campaign</h4>
+                    <p>Your Action Network email action embed code goes here.<br>
+                    Sends pre-written emails to key decision makers.</p>
+                </div>
+            </div>
+
+            <!-- Share Campaign Tools -->
+            <div class="action-embed" id="share-campaign">
+                <h3>📢 Share Our Campaigns</h3>
+                <div class="embed-placeholder">
+                    <i class="fas fa-share-alt"></i>
+                    <h4>Social Media Toolkit</h4>
+                    <p>Pre-written social media posts, graphics, and sharing tools.<br>
+                    Can be Action Network social share widget or custom toolkit.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Volunteer Section -->
+    <section class="volunteer section">
+        <div class="container">
+            <div class="volunteer-content">
+                <div>
+                    <h2 style="color: var(--primary-navy); margin-bottom: 20px;">Volunteer with Praxis Initiative</h2>
+                    <p style="margin-bottom: 30px; color: var(--medium-gray);">Channel your passion and expertise to strengthen every facet of our mission. Whether you're mobilizing events or assisting with essential back office operations, your contribution makes a difference.</p>
+                    
+                    <h3 style="color: var(--primary-navy); margin-bottom: 15px;">Volunteer Opportunities:</h3>
+                    <ul style="color: var(--medium-gray); margin-bottom: 30px; line-height: 1.8;">
+                        <li><strong>Legislative Advocacy:</strong> Help contact lawmakers and attend legislative sessions</li>
+                        <li><strong>Community Outreach:</strong> Engage with communities and spread awareness</li>
+                        <li><strong>Event Planning:</strong> Organize forums, workshops, and community events</li>
+                        <li><strong>Research Support:</strong> Assist with policy research and data analysis</li>
+                        <li><strong>Communications:</strong> Help with social media, newsletters, and content creation</li>
+                        <li><strong>Administrative Support:</strong> Back office operations and organizational tasks</li>
+                    </ul>
+                </div>
+                
+                <div class="volunteer-form" id="volunteer">
+                    <h3 style="color: var(--primary-navy); margin-bottom: 20px; text-align: center;">Volunteer Sign-Up</h3>
+                    <div class="embed-placeholder" style="padding: 40px;">
+                        <i class="fas fa-users"></i>
+                        <h4>Action Network Volunteer Form</h4>
+                        <p>Your Action Network volunteer signup embed goes here.<br>
+                        Collects volunteer info and integrates with your CRM.</p>
+                    </div>
+                    <!-- Replace with Action Network volunteer form embed -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter section">
+        <div class="container">
+            <h2>Stay Informed & Connected</h2>
+            <p>Get the latest on all our initiatives—from prison oversight and policy research to community trainings and advocacy campaigns—delivered right to your inbox.</p>
+            
+            <div class="newsletter-embed">
+                <div class="embed-placeholder" style="color: white;">
+                    <i class="fas fa-envelope"></i>
+                    <h4>Newsletter Signup</h4>
+                    <p>Givebutter newsletter signup embed goes here<br>
+                    (Alternative: Action Network email signup)</p>
+                </div>
+                <!-- Replace with Givebutter or Action Network newsletter signup -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <p>&copy; 2024 Praxis Initiative. Empowering communities for justice.</p>
+                    <div class="footer-links">
+                        <a href="about.html">About</a>
+                        <a href="programs.html">Programs</a>
+                        <a href="issues.html">Issues</a>
+                        <a href="contact.html">Contact</a>
+                        <a href="donate.html">Donate</a>
+                    </div>
+                </div>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Smooth scrolling for action links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'var(--white)';
+                header.style.backdropFilter = 'none';
+            }
+        });
+
+        // Action button tracking
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Track action engagement
+                console.log('Action taken:', this.textContent.trim());
+            });
+        });
+
+        // Counter animation for hero stats
+        const observerOptions = {
+            threshold: 0.7,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counters = entry.target.querySelectorAll('.stat-number');
+                    counters.forEach(counter => {
+                        const target = parseInt(counter.textContent.replace(/[^0-9]/g, '')) || parseInt(counter.textContent);
+                        const increment = target / 30;
+                        let current = 0;
+                        
+                        const timer = setInterval(() => {
+                            current += increment;
+                            if (current >= target) {
+                                const suffix = counter.textContent.includes('+') ? '+' : '';
+                                counter.textContent = target + suffix;
+                                clearInterval(timer);
+                            } else {
+                                const suffix = counter.textContent.includes('+') ? '+' : '';
+                                counter.textContent = Math.floor(current) + suffix;
+                            }
+                        }, 50);
+                    });
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        const heroStats = document.querySelector('.hero-stats');
+        if (heroStats) {
+            counterObserver.observe(heroStats);
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.add('loaded');
+        });
+    </script>
+</body>
+</html>
