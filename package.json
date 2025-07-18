@@ -1,6 +1,6 @@
 {
   "name": "newsite",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Praxis Initiative static site",
   "main": "index.js",
   "scripts": {
@@ -9,4 +9,4 @@
   "devDependencies": {
     "standard-version": "^9.5.0"
   }
-} 
+}
