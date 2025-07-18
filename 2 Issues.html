@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Crisis We Face - Praxis Initiative</title>
+    <meta name="description" content="Explore the urgent issues facing Arizona's criminal justice system and how Praxis Initiative is working to create meaningful reform and oversight.">
+    <link rel="canonical" href="https://yourdomain.org/2%20Issues.html">
+    <meta property="og:title" content="The Crisis We Face - Praxis Initiative">
+    <meta property="og:description" content="Explore the urgent issues facing Arizona's criminal justice system and how Praxis Initiative is working to create meaningful reform and oversight.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourdomain.org/2%20Issues.html">
+    <meta property="og:site_name" content="Praxis Initiative">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Crisis We Face - Praxis Initiative">
+    <meta name="twitter:description" content="Explore the urgent issues facing Arizona's criminal justice system and how Praxis Initiative is working to create meaningful reform and oversight.">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -187,6 +197,7 @@
             padding: 30px;
             border-radius: 12px;
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
         .shock-number {
@@ -348,6 +359,7 @@
             border-radius: 12px;
             text-align: center;
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
         .solution-icon {
@@ -552,12 +564,11 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
+    <header class="header" role="banner">
         <div class="container">
             <div class="header-content">
                 <div class="logo">@</div>
-                <nav class="nav-menu">
+                <nav class="nav-menu" role="navigation" aria-label="Main Navigation">
                     <a href="index.html">Home</a>
                     <a href="programs.html">Programs</a>
                     <a href="about.html">About</a>
@@ -574,185 +585,187 @@
         </div>
     </header>
 
-    <!-- PROBLEM: Crisis Hero Section -->
-    <section class="crisis-hero">
-        <div class="container">
-            <h1>Arizona's Prison Crisis</h1>
-            <p class="subtitle">A system in complete breakdown. Lives hanging in the balance. Action needed NOW.</p>
-            
-            <div class="shocking-stats">
-                <div class="shock-stat">
-                    <div class="shock-number">3,700+</div>
-                    <div class="shock-label">Preventable deaths since 2010</div>
-                </div>
-                <div class="shock-stat">
-                    <div class="shock-number">$2.8B</div>
-                    <div class="shock-label">Taxpayer money wasted annually</div>
-                </div>
-                <div class="shock-stat">
-                    <div class="shock-number">ZERO</div>
-                    <div class="shock-label">Independent oversight for decades</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- AGITATE: Personal Stories -->
-    <section class="stories-section section">
-        <div class="container">
-            <h2 style="text-align: center; font-size: 48px; color: var(--primary-navy); margin-bottom: 20px;">Behind Every Statistic Is a Human Life</h2>
-            <p style="text-align: center; font-size: 18px; color: var(--medium-gray); margin-bottom: 60px; max-width: 800px; margin-left: auto; margin-right: auto;">These aren't just numbers. They're fathers, mothers, sons, daughters—people who deserve dignity, accountability, and the chance to return home safely.</p>
-            
-            <div class="stories-grid">
-                <div class="story-card">
-                    <div class="story-quote">
-                        "I watched my son die slowly from treatable diabetes because the prison refused to provide insulin. He was 34 years old. He had two years left on his sentence."
-                    </div>
-                    <div class="story-attribution">
-                        <div class="story-avatar">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div>
-                            <div class="story-author">Maria Santos</div>
-                            <div class="story-context">Mother of deceased inmate</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="story-card">
-                    <div class="story-quote">
-                        "The heat was unbearable. 118°F inside the cells. No working air conditioning for weeks. Three men in my unit suffered heat stroke in one day."
-                    </div>
-                    <div class="story-attribution">
-                        <div class="story-avatar">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div>
-                            <div class="story-author">James Mitchell</div>
-                            <div class="story-context">Formerly incarcerated, Lewis Prison</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="story-card">
-                    <div class="story-quote">
-                        "I filed 17 grievances about my husband's chest pain. They said he was 'faking it.' He died of a heart attack two weeks before his release date."
-                    </div>
-                    <div class="story-attribution">
-                        <div class="story-avatar">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div>
-                            <div class="story-author">Patricia Williams</div>
-                            <div class="story-context">Widow and advocate</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- AGITATE: Crisis Facts -->
-    <section class="crisis-facts section">
-        <div class="container">
-            <div class="facts-grid">
-                <div>
-                    <div class="fact-item">
-                        <h3>Medical Neglect Crisis</h3>
-                        <p>Arizona prisons have the highest death rate of any state prison system. Inmates die from treatable conditions like diabetes, heart disease, and infections at rates 3x higher than the general population.</p>
-                        <div class="fact-source">Source: Arizona Department of Corrections mortality data, 2023</div>
-                    </div>
-
-                    <div class="fact-item">
-                        <h3>Constitutional Violations</h3>
-                        <p>Federal courts have found Arizona's prison system violates the 8th Amendment prohibition against cruel and unusual punishment through inadequate medical care, excessive heat, and inhumane conditions.</p>
-                        <div class="fact-source">Source: Parsons v. Ryan federal lawsuit findings</div>
-                    </div>
-
-                    <div class="fact-item">
-                        <h3>Taxpayer Waste</h3>
-                        <p>Arizona spends $1.2 billion annually on corrections, yet recidivism rates remain among the highest in the nation. The system fails both public safety and fiscal responsibility.</p>
-                        <div class="fact-source">Source: Arizona Joint Legislative Budget Committee, 2024</div>
-                    </div>
-                </div>
-
-                <div class="facts-visual">
-                    <div class="big-number">96%</div>
-                    <div class="big-caption">of people in prison are coming home.<br>The question isn't if, but when.<br><strong>Will they be better or worse?</strong></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SOLUTION: What We're Doing -->
-    <section class="solution-section section">
-        <div class="container">
-            <div class="solution-intro">
-                <h2>We Have the Solutions</h2>
-                <p>Praxis Initiative isn't just identifying problems—we're implementing proven solutions that save lives, protect taxpayers, and improve public safety.</p>
-            </div>
-
-            <div class="solutions-grid">
-                <div class="solution-card">
-                    <div class="solution-icon">
-                        <i class="fas fa-eye"></i>
-                    </div>
-                    <h3>Independent Oversight</h3>
-                    <p>We successfully created Arizona's Independent Correctional Oversight Office—the first independent prison monitoring in state history.</p>
-                    <a href="programs.html" class="btn btn-primary">Learn More</a>
-                </div>
-
-                <div class="solution-card">
-                    <div class="solution-icon">
-                        <i class="fas fa-gavel"></i>
-                    </div>
-                    <h3>Legal Accountability</h3>
-                    <p>Co-counseling federal lawsuits that force constitutional compliance and protect the rights of incarcerated individuals.</p>
-                    <a href="partners.html" class="btn btn-primary">Our Partners</a>
-                </div>
-
-                <div class="solution-card">
-                    <div class="solution-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>Directly Impacted Leadership</h3>
-                    <p>People closest to the problem are closest to the solution. Our lived experience drives effective, realistic reform.</p>
-                    <a href="about.html" class="btn btn-primary">Meet Our Team</a>
-                </div>
-
-                <div class="solution-card">
-                    <div class="solution-icon">
-                        <i class="fas fa-heart"></i>
-                    </div>
-                    <h3>Harm Reduction</h3>
-                    <p>Evidence-based programs that reduce overdose deaths, prevent violence, and improve health outcomes inside and outside prison.</p>
-                    <a href="programs.html" class="btn btn-primary">Our Programs</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- URGENT ACTION CALL -->
-    <section class="urgent-action section">
-        <div class="container">
-            <div class="action-content">
-                <h2>People Are Dying Right Now</h2>
-                <p>Every day we wait, more preventable deaths occur. Every dollar you donate directly saves lives and reforms a broken system.</p>
+    <main id="main-content" role="main">
+        <!-- PROBLEM: Crisis Hero Section -->
+        <section class="crisis-hero">
+            <div class="container">
+                <h1>Arizona's Prison Crisis</h1>
+                <p class="subtitle">A system in complete breakdown. Lives hanging in the balance. Action needed NOW.</p>
                 
-                <div class="action-buttons">
-                    <a href="donate.html" class="btn btn-white">
-                        <i class="fas fa-heart"></i> DONATE TO SAVE LIVES
-                    </a>
-                    <a href="action-center.html" class="btn btn-outline-white">
-                        <i class="fas fa-bullhorn"></i> TAKE ACTION NOW
-                    </a>
+                <div class="shocking-stats">
+                    <div class="shock-stat">
+                        <div class="shock-number">3,700+</div>
+                        <div class="shock-label">Preventable deaths since 2010</div>
+                    </div>
+                    <div class="shock-stat">
+                        <div class="shock-number">$2.8B</div>
+                        <div class="shock-label">Taxpayer money wasted annually</div>
+                    </div>
+                    <div class="shock-stat">
+                        <div class="shock-number">ZERO</div>
+                        <div class="shock-label">Independent oversight for decades</div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- AGITATE: Personal Stories -->
+        <section class="stories-section section">
+            <div class="container">
+                <h2 style="text-align: center; font-size: 48px; color: var(--primary-navy); margin-bottom: 20px;">Behind Every Statistic Is a Human Life</h2>
+                <p style="text-align: center; font-size: 18px; color: var(--medium-gray); margin-bottom: 60px; max-width: 800px; margin-left: auto; margin-right: auto;">These aren't just numbers. They're fathers, mothers, sons, daughters—people who deserve dignity, accountability, and the chance to return home safely.</p>
+                
+                <div class="stories-grid">
+                    <div class="story-card">
+                        <div class="story-quote">
+                            "I watched my son die slowly from treatable diabetes because the prison refused to provide insulin. He was 34 years old. He had two years left on his sentence."
+                        </div>
+                        <div class="story-attribution">
+                            <div class="story-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div>
+                                <div class="story-author">Maria Santos</div>
+                                <div class="story-context">Mother of deceased inmate</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="story-card">
+                        <div class="story-quote">
+                            "The heat was unbearable. 118°F inside the cells. No working air conditioning for weeks. Three men in my unit suffered heat stroke in one day."
+                        </div>
+                        <div class="story-attribution">
+                            <div class="story-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div>
+                                <div class="story-author">James Mitchell</div>
+                                <div class="story-context">Formerly incarcerated, Lewis Prison</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="story-card">
+                        <div class="story-quote">
+                            "I filed 17 grievances about my husband's chest pain. They said he was 'faking it.' He died of a heart attack two weeks before his release date."
+                        </div>
+                        <div class="story-attribution">
+                            <div class="story-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div>
+                                <div class="story-author">Patricia Williams</div>
+                                <div class="story-context">Widow and advocate</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AGITATE: Crisis Facts -->
+        <section class="crisis-facts section">
+            <div class="container">
+                <div class="facts-grid">
+                    <div>
+                        <div class="fact-item">
+                            <h3>Medical Neglect Crisis</h3>
+                            <p>Arizona prisons have the highest death rate of any state prison system. Inmates die from treatable conditions like diabetes, heart disease, and infections at rates 3x higher than the general population.</p>
+                            <div class="fact-source">Source: Arizona Department of Corrections mortality data, 2023</div>
+                        </div>
+
+                        <div class="fact-item">
+                            <h3>Constitutional Violations</h3>
+                            <p>Federal courts have found Arizona's prison system violates the 8th Amendment prohibition against cruel and unusual punishment through inadequate medical care, excessive heat, and inhumane conditions.</p>
+                            <div class="fact-source">Source: Parsons v. Ryan federal lawsuit findings</div>
+                        </div>
+
+                        <div class="fact-item">
+                            <h3>Taxpayer Waste</h3>
+                            <p>Arizona spends $1.2 billion annually on corrections, yet recidivism rates remain among the highest in the nation. The system fails both public safety and fiscal responsibility.</p>
+                            <div class="fact-source">Source: Arizona Joint Legislative Budget Committee, 2024</div>
+                        </div>
+                    </div>
+
+                    <div class="facts-visual">
+                        <div class="big-number">96%</div>
+                        <div class="big-caption">of people in prison are coming home.<br>The question isn't if, but when.<br><strong>Will they be better or worse?</strong></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SOLUTION: What We're Doing -->
+        <section class="solution-section section">
+            <div class="container">
+                <div class="solution-intro">
+                    <h2>We Have the Solutions</h2>
+                    <p>Praxis Initiative isn't just identifying problems—we're implementing proven solutions that save lives, protect taxpayers, and improve public safety.</p>
+                </div>
+
+                <div class="solutions-grid">
+                    <div class="solution-card">
+                        <div class="solution-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3>Independent Oversight</h3>
+                        <p>We successfully created Arizona's Independent Correctional Oversight Office—the first independent prison monitoring in state history.</p>
+                        <a href="programs.html" class="btn btn-primary">Learn More</a>
+                    </div>
+
+                    <div class="solution-card">
+                        <div class="solution-icon">
+                            <i class="fas fa-gavel"></i>
+                        </div>
+                        <h3>Legal Accountability</h3>
+                        <p>Co-counseling federal lawsuits that force constitutional compliance and protect the rights of incarcerated individuals.</p>
+                        <a href="partners.html" class="btn btn-primary">Our Partners</a>
+                    </div>
+
+                    <div class="solution-card">
+                        <div class="solution-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Directly Impacted Leadership</h3>
+                        <p>People closest to the problem are closest to the solution. Our lived experience drives effective, realistic reform.</p>
+                        <a href="about.html" class="btn btn-primary">Meet Our Team</a>
+                    </div>
+
+                    <div class="solution-card">
+                        <div class="solution-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Harm Reduction</h3>
+                        <p>Evidence-based programs that reduce overdose deaths, prevent violence, and improve health outcomes inside and outside prison.</p>
+                        <a href="programs.html" class="btn btn-primary">Our Programs</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- URGENT ACTION CALL -->
+        <section class="urgent-action section">
+            <div class="container">
+                <div class="action-content">
+                    <h2>People Are Dying Right Now</h2>
+                    <p>Every day we wait, more preventable deaths occur. Every dollar you donate directly saves lives and reforms a broken system.</p>
+                    
+                    <div class="action-buttons">
+                        <a href="donate.html" class="btn btn-white">
+                            <i class="fas fa-heart"></i> DONATE TO SAVE LIVES
+                        </a>
+                        <a href="action-center.html" class="btn btn-outline-white">
+                            <i class="fas fa-bullhorn"></i> TAKE ACTION NOW
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <div class="container">
             <div class="footer-content">
                 <div>

@@ -2,7 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact | Praxis Initiative</title>
+    <meta name="description" content="Contact Praxis Initiative for general inquiries, legal assistance, press, or to get involved in justice reform in Arizona.">
+    <link rel="canonical" href="https://yourdomain.org/8%20Contact.html">
+    <meta property="og:title" content="Contact | Praxis Initiative">
+    <meta property="og:description" content="Contact Praxis Initiative for general inquiries, legal assistance, press, or to get involved in justice reform in Arizona.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourdomain.org/8%20Contact.html">
+    <meta property="og:site_name" content="Praxis Initiative">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Contact | Praxis Initiative">
+    <meta name="twitter:description" content="Contact Praxis Initiative for general inquiries, legal assistance, press, or to get involved in justice reform in Arizona.">
     <style>
         .contact-method {
             margin: 25px 0;
@@ -17,51 +28,51 @@
     </style>
 </head>
 <body>
-    <header><!-- Consistent header --></header>
-
-    <section class="hero">
-        <h1>Contact Our Team</h1>
-        <p>We respond within 48 hours to all inquiries.</p>
-    </section>
-
-    <div class="contact-container">
-        <section class="contact-info">
-            <div class="contact-method">
-                <h2>General Inquiries</h2>
-                <p>Email: <a href="mailto:info@praxisinitiative.org">info@praxisinitiative.org</a></p>
-                <p>Phone: (602) 555-0192</p>
-            </div>
-
-            <div class="contact-method">
-                <h2>Legal Assistance</h2>
-                <p>Email: <a href="mailto:legal@praxisinitiative.org">legal@praxisinitiative.org</a></p>
-                <p>For incarcerated individuals: Mail to our PO Box (no stamps required)</p>
-            </div>
-
-            <div class="contact-method">
-                <h2>Press & Media</h2>
-                <p>Email: <a href="mailto:press@praxisinitiative.org">press@praxisinitiative.org</a></p>
-                <p>Media kit available upon request</p>
-            </div>
+    <header class="header" role="banner"></header>
+    <main id="main-content" role="main">
+        <section class="hero">
+            <h1>Contact Our Team</h1>
+            <p>We respond within 48 hours to all inquiries.</p>
         </section>
 
-        <section class="contact-form">
-            <form id="contact-form">
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Email" required>
-                <select required>
-                    <option value="">Select a topic</option>
-                    <option>Legal Assistance</option>
-                    <option>Volunteer Inquiry</option>
-                    <option>Donation Question</option>
-                    <option>Press Inquiry</option>
-                </select>
-                <textarea placeholder="Your message" required></textarea>
-                <button type="submit">Send Message</button>
-            </form>
-        </section>
-    </div>
+        <div class="contact-container">
+            <section class="contact-info">
+                <div class="contact-method">
+                    <h2>General Inquiries</h2>
+                    <p>Email: <a href="mailto:info@praxisinitiative.org">info@praxisinitiative.org</a></p>
+                    <p>Phone: (602) 555-0192</p>
+                </div>
 
-    <footer><!-- Consistent footer --></footer>
+                <div class="contact-method">
+                    <h2>Legal Assistance</h2>
+                    <p>Email: <a href="mailto:legal@praxisinitiative.org">legal@praxisinitiative.org</a></p>
+                    <p>For incarcerated individuals: Mail to our PO Box (no stamps required)</p>
+                </div>
+
+                <div class="contact-method">
+                    <h2>Press & Media</h2>
+                    <p>Email: <a href="mailto:press@praxisinitiative.org">press@praxisinitiative.org</a></p>
+                    <p>Media kit available upon request</p>
+                </div>
+            </section>
+
+            <section class="contact-form">
+                <form id="contact-form" autocomplete="on" spellcheck="true">
+                    <input type="text" placeholder="Your Name" required autocomplete="name">
+                    <input type="email" placeholder="Email" required autocomplete="email">
+                    <select required title="Select a topic">
+                        <option value="">Select a topic</option>
+                        <option>Legal Assistance</option>
+                        <option>Volunteer Inquiry</option>
+                        <option>Donation Question</option>
+                        <option>Press Inquiry</option>
+                    </select>
+                    <textarea placeholder="Your message" required autocomplete="off" spellcheck="true"></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </section>
+        </div>
+    </main>
+    <footer class="footer" role="contentinfo"></footer>
 </body>
 </html>
