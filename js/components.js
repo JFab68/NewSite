@@ -80,9 +80,11 @@ class ComponentLoader {
                 if (window.scrollY > 100) {
                     header.style.background = 'rgba(255, 255, 255, 0.95)';
                     header.style.backdropFilter = 'blur(10px)';
+                    header.style.webkitBackdropFilter = 'blur(10px)';
                 } else {
                     header.style.background = 'var(--white)';
                     header.style.backdropFilter = 'none';
+                    header.style.webkitBackdropFilter = 'none';
                 }
             }
         });
