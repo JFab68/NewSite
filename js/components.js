@@ -11,7 +11,7 @@ class ComponentLoader {
         
         // Map filenames to page identifiers
         const pageMap = {
-            'index.html': 'home',
+            '1 Homepage.html': 'homepage',
             '1 homepage.html': 'home',
             '2 issues.html': 'issues',
             '3 about.html': 'about',

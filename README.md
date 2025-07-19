@@ -37,7 +37,7 @@ A responsive website for Praxis Initiative, Arizona's only directly impacted-led
 
 ```
 /
-├── index.html              # Homepage (replaces 1 Homepage.html)
+├── 1 Homepage.html         # Primary homepage
 ├── 2 Issues.html           # Issues page  
 ├── 3 About.html            # About page
 ├── 4 Programs.html         # Programs page

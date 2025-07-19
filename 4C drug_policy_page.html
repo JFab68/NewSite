@@ -17,7 +17,7 @@
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Miller+Text:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link rel="stylesheet" href="css/styles.css">
     <style>
         * {
             margin: 0;
@@ -713,21 +713,7 @@
     </style>
 </head>
 <body>
-    <header class="navbar" role="banner">
-        <div class="nav-container">
-            <a href="/" class="logo">Praxis Initiative</a>
-            <ul class="nav-menu">
-                <li class="nav-item"><a href="/about">About</a></li>
-                <li class="nav-item"><a href="/programs" class="active">Programs</a></li>
-                <li class="nav-item"><a href="/research">Research</a></li>
-                <li class="nav-item"><a href="/resources">Resources</a></li>
-                <li class="nav-item"><a href="/action-center">Take Action</a></li>
-                <li class="nav-item"><a href="/contact-us">Contact</a></li>
-            </ul>
-            <a href="/donate" class="nav-cta">Donate</a>
-            <button class="mobile-menu-btn">☰</button>
-        </div>
-    </header>
+    <header id="global-header" role="banner"></header>
 
     <main id="main-content" role="main">
         <!-- Hero Section -->
@@ -983,54 +969,9 @@
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer" role="contentinfo">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>Praxis Initiative</h4>
-                    <p>Transforming Arizona's criminal legal system through lived experience, evidence-based advocacy, and community-driven solutions.</p>
-                </div>
-
-                <div class="footer-section">
-                    <h4>Programs</h4>
-                    <ul class="footer-links">
-                        <li><a href="/independent-prison-oversight">Independent Prison Oversight</a></li>
-                        <li><a href="/criminal-legal-system-reform">Criminal Legal System Reform</a></li>
-                        <li><a href="/drug-use-risk-mitigation">Drug Policy & Overdose Prevention</a></li>
-                        <li><a href="/arts-in-prison">Arts in Prison</a></li>
-                        <li><a href="/returning-citizens-core-civics-and-advocacy-training">Civic Engagement Training</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-section">
-                    <h4>Get Involved</h4>
-                    <ul class="footer-links">
-                        <li><a href="/donate">Donate</a></li>
-                        <li><a href="/action-center">Volunteer</a></li>
-                        <li><a href="/action-center">Newsletter</a></li>
-                        <li><a href="/contact-us">Contact Us</a></li>
-                        <li><a href="/about">About Us</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-section">
-                    <h4>Connect</h4>
-                    <p>Follow us for updates on criminal justice reform in Arizona</p>
-                    <div style="margin-top: 1rem;">
-                        <a href="#" style="color: var(--teal); margin-right: 1rem;">Facebook</a>
-                        <a href="#" style="color: var(--teal); margin-right: 1rem;">Twitter</a>
-                        <a href="#" style="color: var(--teal); margin-right: 1rem;">LinkedIn</a>
-                        <a href="#" style="color: var(--teal);">Instagram</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p>&copy; 2025 Praxis Initiative. All rights reserved. | Drug Policy & Overdose Prevention</p>
-            </div>
-        </div>
-    </footer>
+    <footer id="global-footer" role="contentinfo"></footer>
+    <!-- Load global components and page-specific scripts -->
+    <script src="js/components.js"></script>
 
     <script>
         // Fade in animation on scroll

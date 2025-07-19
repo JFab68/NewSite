@@ -37,9 +37,15 @@
     Cache-Control = "public, max-age=31536000, immutable"
 
 [[redirects]]
-  # Redirect homepage variations to index.html
-  from = "/1 Homepage.html"
-  to = "/index.html"
+  # Redirect root to homepage
+  from = "/"
+  to = "/1 Homepage.html"
+  status = 301
+
+[[redirects]]
+  # Redirect old index.html to homepage
+  from = "/index.html"
+  to = "/1 Homepage.html"
   status = 301
 
 [[redirects]]
@@ -51,5 +57,5 @@
 # Error pages
 [[redirects]]
   from = "/*"
-  to = "/index.html"
+  to = "/1 Homepage.html"
   status = 404
