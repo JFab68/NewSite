@@ -61,3 +61,5 @@ a,button,[role="button"],input,select,textarea{transition:box-shadow 0.2s,outlin
   .change-card-content, .impact-item, .learn-more-card { padding: 8px; }
   .change-card-image, .impact-item, .learn-more-card { height: 50px; }
 }
+.logo-link { display: flex; align-items: center; gap: 10px; }
+.logo-img { height: 48px; max-width: 220px; width: auto; object-fit: contain; vertical-align: middle; }
