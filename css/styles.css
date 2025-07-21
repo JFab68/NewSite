@@ -82,3 +82,4 @@ a,button,[role="button"],input,select,textarea{transition:box-shadow 0.2s,outlin
 .centered-div { text-align: center; }
 .primary-navy { color: var(--primary-navy); }
 .max-width-800 { max-width: 800px; margin-left: auto; margin-right: auto; }
+.team-headshot { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: block; }
