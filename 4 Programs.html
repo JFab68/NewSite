@@ -512,28 +512,7 @@
     </style>
 </head>
 <body>
-    <header class="header" role="banner">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">@</div>
-                <nav class="nav-menu" role="navigation" aria-label="Main Navigation">
-                    <a href="1 Homepage.html">Home</a>
-                    <a href="issues.html">Issues</a>
-                    <a href="programs.html" class="active">Programs</a>
-                    <a href="about.html">About</a>
-                    <a href="action-center.html">Action Center</a>
-                    <a href="news.html">News</a>
-                    <a href="partners.html">Partners</a>
-                    <a href="donate.html">Donate</a>
-                    <a href="contact.html">Contact</a>
-                </nav>
-                <a href="donate.html" class="btn btn-urgent">FUND PROVEN SOLUTIONS</a>
-                <button class="mobile-menu-toggle">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
-        </div>
-    </header>
+    <header id="global-header" role="banner"></header>
 
     <main id="main-content" role="main">
         <!-- Hero Section -->
@@ -835,29 +814,8 @@
             </div>
         </section>
     </main>
-    <footer class="footer" role="contentinfo">
-        <div class="container">
-            <div class="footer-content">
-                <div>
-                    <p>&copy; 2024 Praxis Initiative. Empowering communities for justice.</p>
-                    <div class="footer-links">
-                        <a href="about.html">About</a>
-                        <a href="programs.html">Programs</a>
-                        <a href="issues.html">Issues</a>
-                        <a href="contact.html">Contact</a>
-                        <a href="donate.html">Donate</a>
-                    </div>
-                </div>
-                <div class="social-icons">
-                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
+    <footer id="global-footer" role="contentinfo"></footer>
+    <script src="js/components.js"></script>
     <script>
         // Mobile menu toggle
         const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
