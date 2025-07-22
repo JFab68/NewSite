@@ -83,3 +83,156 @@ a,button,[role="button"],input,select,textarea{transition:box-shadow 0.2s,outlin
 .primary-navy { color: var(--primary-navy); }
 .max-width-800 { max-width: 800px; margin-left: auto; margin-right: auto; }
 .team-headshot { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: block; }
+
+/* Header Two-Row Layout */
+.header {
+  background: var(--primary-navy);
+  color: #fff;
+  width: 100%;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  z-index: 1000;
+}
+.header-row-1, .header-row-2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0 32px;
+}
+.header-row-1 {
+  min-height: 64px;
+  justify-content: space-between;
+  border-bottom: 1px solid #0a1a3a;
+}
+.header-row-2 {
+  min-height: 48px;
+  background: #001040;
+  justify-content: center;
+}
+.logo-link {
+  display: flex;
+  align-items: center;
+  height: 64px;
+}
+.logo-img {
+  height: 48px;
+  max-width: 220px;
+  width: auto;
+  object-fit: contain;
+  vertical-align: middle;
+}
+.givebutter-btn {
+  display: flex;
+  align-items: center;
+  margin-left: 24px;
+}
+.nav-row-1, .nav-row-2 {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  justify-content: center;
+  flex: 1;
+}
+.nav-row-1 a, .nav-row-2 a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 18px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+.nav-row-1 a:hover, .nav-row-2 a:hover, .dropdown:hover > .dropdown-toggle {
+  background: #0a1a3a;
+  color: #ffd700;
+}
+.dropdown {
+  position: relative;
+}
+.dropdown-toggle {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #001040;
+  min-width: 220px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  border-radius: 0 0 8px 8px;
+  z-index: 1001;
+  flex-direction: column;
+  padding: 8px 0;
+}
+.dropdown:hover .dropdown-menu,
+.dropdown:focus-within .dropdown-menu {
+  display: flex;
+}
+.dropdown-menu a {
+  color: #fff;
+  padding: 10px 24px;
+  font-size: 16px;
+  border-radius: 0;
+  background: none;
+  transition: background 0.2s, color 0.2s;
+}
+.dropdown-menu a:hover {
+  background: #0a1a3a;
+  color: #ffd700;
+}
+@media (max-width: 992px) {
+  .header-row-1, .header-row-2 {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0 12px;
+  }
+  .nav-row-1, .nav-row-2 {
+    gap: 18px;
+    font-size: 16px;
+  }
+  .logo-img {
+    height: 40px;
+    max-width: 160px;
+  }
+}
+@media (max-width: 768px) {
+  .header-row-1, .header-row-2 {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0 4px;
+  }
+  .nav-row-1, .nav-row-2 {
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 15px;
+  }
+  .logo-img {
+    height: 32px;
+    max-width: 120px;
+  }
+  .givebutter-btn {
+    margin-left: 0;
+    margin-top: 8px;
+    justify-content: flex-end;
+  }
+}
+@media (max-width: 480px) {
+  .header-row-1, .header-row-2 {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0 2px;
+  }
+  .nav-row-1, .nav-row-2 {
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+  }
+  .logo-img {
+    height: 24px;
+    max-width: 80px;
+  }
+}
