@@ -20,10 +20,48 @@
     <script src="https://js.givebutter.com/elements/latest.js"></script>
 </head>
 <body>
-    <header id="global-header" role="banner"></header>
+
+    <header class="header">
+        <div class="header-container">
+            <a href="1 Homepage.html" class="header-logo">
+                <img src="10 Assets/Praxis Logos/Praxis Logo New Italic Tagline Navy Transparent BG 1078 x 218.png" alt="Praxis Initiative Logo" class="logo-img">
+            </a>
+            <nav class="header-nav">
+                <div class="nav-links-row">
+                    <a href="1 Homepage.html">Home</a>
+                    <a href="2 Issues.html">Issues</a>
+                    <a href="3 About.html">About</a>
+                    <div class="dropdown">
+                        <a href="4 Programs.html" class="dropdown-toggle">Programs &#9662;</a>
+                        <div class="dropdown-menu">
+                            <a href="4A prison_oversight_page.html">Prison Oversight</a>
+                            <a href="4B criminal_legal_reform_page.html">Criminal Legal Reform</a>
+                            <a href="4C drug_policy_page.html">Drug Policy</a>
+                            <a href="4D civic_engagement_page.html">Civic Engagement</a>
+                            <a href="4E arts_in_prison_page.html">Arts in Prison</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-links-row">
+                    <a href="5 Action Center.html">Action Center</a>
+                    <a href="6 Partners.html">Partners</a>
+                    <a href="7 News.html">News</a>
+                    <a href="8 Contact.html">Contact</a>
+                    <a href="#blog">Blog</a>
+                </div>
+            </nav>
+            <div class="header-cta">
+                <givebutter-widget id="jbkZBL"></givebutter-widget>
+            </div>
+            <button class="mobile-menu-toggle" aria-label="Open navigation menu" aria-expanded="false">
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+            </button>
+        </div>
+    </header>
 
     <main id="main-content" role="main">
-        <!-- Hero Section -->
         <section class="hero">
             <div class="container">
                 <h1>Fund the Fight for Justice</h1>
@@ -46,16 +84,13 @@
             </div>
         </section>
 
-        <!-- Givebutter Donation Form -->
         <section class="givebutter-section">
             <div class="container">
                 <div class="donation-container">
                     <h2>Make Your Impact Today</h2>
                     <p>Choose your donation amount and frequency. Every contribution directly funds our oversight investigations, legal advocacy, and evidence-based reform campaigns.</p>
                     
-                    <!-- Givebutter Embed -->
                     <div class="givebutter-embed">
-                        <!-- Replace this placeholder with your actual Givebutter embed code -->
                         <div class="givebutter-placeholder">
                             <i class="fas fa-heart"></i>
                             <h3>Givebutter Donation Form</h3>
@@ -68,20 +103,11 @@
                             </p>
                         </div>
                         
-                        <!-- Example Givebutter embed structure (replace with your actual code):
-                        <iframe src="https://givebutter.com/embed/your-campaign-id" 
-                                width="100%" 
-                                height="600" 
-                                frameborder="0" 
-                                scrolling="no">
-                        </iframe>
-                        -->
-                    </div>
+                        </div>
                 </div>
             </div>
         </section>
 
-        <!-- Impact Stories -->
         <section class="impact-stories section">
             <div class="container">
                 <h2 class="centered-title">Your Impact in Action</h2>
@@ -126,7 +152,6 @@
             </div>
         </section>
 
-        <!-- Monthly Giving -->
         <section class="monthly-giving section">
             <div class="container">
                 <div class="monthly-content">
@@ -144,7 +169,6 @@
                     </div>
                     
                     <div class="monthly-givebutter">
-                        <!-- Monthly Givebutter embed placeholder -->
                         <div class="monthly-givebutter-inner white-text centered-div">
                             <i class="fas fa-calendar-alt newsletter-icon"></i>
                             <h3>Monthly Giving Form</h3>
@@ -155,7 +179,6 @@
             </div>
         </section>
 
-        <!-- Newsletter Signup -->
         <section class="newsletter section">
             <div class="container">
                 <div class="newsletter-content">
@@ -163,7 +186,6 @@
                     <p>Get updates on our victories, action alerts, and behind-the-scenes stories from the movement for justice reform.</p>
                     
                     <div class="newsletter-embed centered-div">
-                        <!-- Givebutter Newsletter Signup placeholder -->
                         <div class="newsletter-icon primary-navy">
                             <i class="fas fa-envelope newsletter-icon"></i>
                             <h3>Newsletter Signup</h3>
@@ -174,54 +196,24 @@
             </div>
         </section>
     </main>
+
     <footer id="global-footer" role="contentinfo"></footer>
 
     <script src="js/components.js"></script>
     <script>
-        // Mobile menu toggle
-        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-        const navMenu = document.querySelector('.nav-menu');
-
-        mobileMenuToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-        });
-
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('.header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-                header.style.backdropFilter = 'blur(10px)';
-            } else {
-                header.style.background = 'var(--white)';
-                header.style.backdropFilter = 'none';
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Menu Toggle
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+            const nav = document.querySelector('.header-nav');
+            if (menuToggle && nav) {
+                menuToggle.addEventListener('click', () => {
+                    menuToggle.classList.toggle('is-active');
+                    nav.classList.toggle('is-active');
+                    const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+                    menuToggle.setAttribute('aria-expanded', !isExpanded);
+                });
             }
         });
-
-        // Scroll animation
-        const fadeElements = document.querySelectorAll('.section');
-        
-        const checkVisibility = () => {
-            fadeElements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-                
-                if (elementTop < windowHeight - 100) {
-                    element.style.opacity = '1';
-                    element.style.transform = 'translateY(0)';
-                }
-            });
-        };
-        
-        // Initialize animations
-        fadeElements.forEach(element => {
-            element.style.opacity = '0';
-            element.style.transform = 'translateY(30px)';
-            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        });
-        
-        window.addEventListener('scroll', checkVisibility);
-        window.addEventListener('load', checkVisibility);
     </script>
 </body>
 </html>

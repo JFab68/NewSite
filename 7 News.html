@@ -20,9 +20,47 @@
     <script src="https://js.givebutter.com/elements/latest.js"></script>
 </head>
 <body>
-    <header id="global-header" role="banner"></header>
 
-    <!-- Hero Section -->
+    <header class="header">
+        <div class="header-container">
+            <a href="1 Homepage.html" class="header-logo">
+                <img src="10 Assets/Praxis Logos/Praxis Logo New Italic Tagline Navy Transparent BG 1078 x 218.png" alt="Praxis Initiative Logo" class="logo-img">
+            </a>
+            <nav class="header-nav">
+                <div class="nav-links-row">
+                    <a href="1 Homepage.html">Home</a>
+                    <a href="2 Issues.html">Issues</a>
+                    <a href="3 About.html">About</a>
+                    <div class="dropdown">
+                        <a href="4 Programs.html" class="dropdown-toggle">Programs &#9662;</a>
+                        <div class="dropdown-menu">
+                            <a href="4A prison_oversight_page.html">Prison Oversight</a>
+                            <a href="4B criminal_legal_reform_page.html">Criminal Legal Reform</a>
+                            <a href="4C drug_policy_page.html">Drug Policy</a>
+                            <a href="4D civic_engagement_page.html">Civic Engagement</a>
+                            <a href="4E arts_in_prison_page.html">Arts in Prison</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-links-row">
+                    <a href="5 Action Center.html">Action Center</a>
+                    <a href="6 Partners.html">Partners</a>
+                    <a href="7 News.html">News</a>
+                    <a href="8 Contact.html">Contact</a>
+                    <a href="#blog">Blog</a>
+                </div>
+            </nav>
+            <div class="header-cta">
+                <givebutter-widget id="jbkZBL"></givebutter-widget>
+            </div>
+            <button class="mobile-menu-toggle" aria-label="Open navigation menu" aria-expanded="false">
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+            </button>
+        </div>
+    </header>
+
     <section class="hero">
         <div class="container">
             <h1>News & Resources</h1>
@@ -30,7 +68,6 @@
         </div>
     </section>
 
-    <!-- Filter Bar -->
     <section class="filter-bar">
         <div class="container">
             <div class="filter-content">
@@ -49,7 +86,6 @@
         </div>
     </section>
 
-    <!-- Featured Article -->
     <section class="featured section">
         <div class="container">
             <div class="section-label">Featured</div>
@@ -78,11 +114,9 @@
         </div>
     </section>
 
-    <!-- Content Grid -->
     <section class="content-grid section-sm">
         <div class="container">
             <div class="content-items">
-                <!-- Whitepaper Card -->
                 <div class="content-card">
                     <div class="card-image">
                         <div class="card-badge badge-whitepaper">Whitepaper</div>
@@ -104,7 +138,6 @@
                     </div>
                 </div>
 
-                <!-- Blog Card -->
                 <div class="content-card">
                     <div class="card-image">
                         <div class="card-badge badge-blog">Blog</div>
@@ -126,7 +159,6 @@
                     </div>
                 </div>
 
-                <!-- Article Card -->
                 <div class="content-card">
                     <div class="card-image">
                         <div class="card-badge badge-article">Article</div>
@@ -148,7 +180,6 @@
                     </div>
                 </div>
 
-                <!-- Report Card -->
                 <div class="content-card">
                     <div class="card-image">
                         <div class="card-badge badge-report">Report</div>
@@ -170,7 +201,6 @@
                     </div>
                 </div>
 
-                <!-- Whitepaper Card 2 -->
                 <div class="content-card">
                     <div class="card-image">
                         <div class="card-badge badge-whitepaper">Whitepaper</div>
@@ -192,7 +222,6 @@
                     </div>
                 </div>
 
-                <!-- Blog Card 2 -->
                 <div class="content-card">
                     <div class="card-image">
                         <div class="card-badge badge-blog">Blog</div>
@@ -217,7 +246,6 @@
         </div>
     </section>
 
-    <!-- Newsletter CTA -->
     <section class="newsletter-cta section">
         <div class="container">
             <h2>Stay Updated</h2>
@@ -229,61 +257,58 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer id="global-footer" role="contentinfo"></footer>
+
     <script src="js/components.js"></script>
     <script>
-        // Filter Tabs
-        const filterTabs = document.querySelectorAll('.filter-tab');
-        
-        filterTabs.forEach(tab => {
-            tab.addEventListener('click', (e) => {
-                e.preventDefault();
-                filterTabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-                // Here you would filter content based on data-filter attribute
-            });
-        });
-
-        // Search Functionality
-        const searchBtn = document.getElementById('searchBtn');
-        const searchInput = document.getElementById('searchInput');
-        
-        searchBtn.addEventListener('click', () => {
-            const searchTerm = searchInput.value.trim();
-            if (searchTerm) {
-                // Here you would implement search functionality
-                console.log('Searching for:', searchTerm);
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Menu Toggle
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+            const nav = document.querySelector('.header-nav');
+            if (menuToggle && nav) {
+                menuToggle.addEventListener('click', () => {
+                    menuToggle.classList.toggle('is-active');
+                    nav.classList.toggle('is-active');
+                    const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+                    menuToggle.setAttribute('aria-expanded', !isExpanded);
+                });
             }
-        });
 
-        // Scroll Animation
-        const fadeElements = document.querySelectorAll('.fade-in');
-        
-        const checkVisibility = () => {
-            fadeElements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-                
-                if (elementTop < windowHeight - 100) {
-                    element.classList.add('visible');
+            // Filter Tabs
+            const filterTabs = document.querySelectorAll('.filter-tab');
+            filterTabs.forEach(tab => {
+                tab.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    filterTabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    // Add filter logic here
+                });
+            });
+
+            // Search Functionality
+            const searchBtn = document.getElementById('searchBtn');
+            const searchInput = document.getElementById('searchInput');
+            searchBtn.addEventListener('click', () => {
+                const searchTerm = searchInput.value.trim();
+                if (searchTerm) {
+                    console.log('Searching for:', searchTerm);
+                    // Add search logic here
                 }
             });
-        };
-        
-        window.addEventListener('scroll', checkVisibility);
-        window.addEventListener('load', checkVisibility);
 
-        // Newsletter Form Submission
-        const newsletterForm = document.querySelector('.newsletter-form');
-        
-        newsletterForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = newsletterForm.querySelector('input').value;
-            // Here you would handle the form submission
-            console.log('Subscribed email:', email);
-            newsletterForm.querySelector('input').value = '';
-            alert('Thank you for subscribing!');
+            // Scroll Animation (if using fade-in classes)
+            const fadeElements = document.querySelectorAll('.fade-in');
+            const checkVisibility = () => {
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    if (elementTop < windowHeight - 100) {
+                        element.classList.add('visible');
+                    }
+                });
+            };
+            window.addEventListener('scroll', checkVisibility);
+            checkVisibility(); // Initial check on load
         });
     </script>
 </body>
