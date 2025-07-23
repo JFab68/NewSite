@@ -1,399 +1,515 @@
-/* =================================================================
-   1. GLOBAL STYLES & VARIABLES
-   ================================================================= */
+@import 'header.css';
+@import 'footer.css';
 
-   :root {
-    --primary-navy: #000080;
-    --secondary-maroon: #800000;
-    --white: #fff;
-    --light-gray: #f8f9fa;
-    --dark-gray: #333;
-    --medium-gray: #666;
-    --light-purple: #e8e3f3;
-    --urgent-red: #dc3545;
-    --warning-orange: #fd7e14;
-    --success-green: #28a745;
-    --light-blue: #e8f0ff;
+/\* =================================================================
+
+1. GLOBAL STYLES & VARIABLES
+   \================================================================= \*/
+   \:root {
+   \--primary-navy: #000080;
+   \--secondary-maroon: #800000;
+   \--white: #fff;
+   \--light-gray: #f8f9fa;
+   \--dark-gray: #333;
+   \--medium-gray: #666;
+   \--light-purple: #e8e3f3;
+   \--urgent-red: #dc3545;
+   \--warning-orange: #fd7e14;
+   \--success-green: #28a745;
+   \--light-blue: #e8f0ff;
+   }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   }
-  
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
   body {
-    font-family: 'Poppins', sans-serif;
-    line-height: 1.6;
-    color: var(--dark-gray);
-    overflow-x: hidden;
-    /* Add padding to the top to prevent content from hiding behind the fixed header */
-    padding-top: 92px; /* Adjust this value based on the final height of your header */
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  color: var(--dark-gray);
+  overflow-x: hidden;
+  /\* Add padding to the top to prevent content from hiding behind the fixed header \*/
+  padding-top: 92px;
   }
-  
   .container {
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 0 24px;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 24px;
   }
-  
-  /* =================================================================
-     2. ACCESSIBILITY & UTILITY
-     ================================================================= */
-  
-  .skip-link {
-    position: absolute;
-    left: -999px;
-    top: auto;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    z-index: 10000;
-    background: #fff;
-    color: #000;
-    padding: 8px 16px;
-    border-radius: 4px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-    font-weight: 600;
-    transition: all 0.2s;
-  }
-  
-  .skip-link:focus {
-    left: 16px;
-    top: 16px;
-    width: auto;
-    height: auto;
-    outline: 3px solid #000;
-    outline-offset: 2px;
-  }
-  
-  a, button, [role="button"], input, select, textarea {
-    transition: box-shadow 0.2s, outline 0.2s;
-  }
-  
-  a:focus, button:focus, [role="button"]:focus, input:focus, select:focus, textarea:focus {
-    outline: 3px solid #000;
-    outline-offset: 2px;
-    box-shadow: 0 0 0 2px var(--primary-navy);
-  }
-  
-  a:active, button:active, [role="button"]:active {
-    outline: 3px solid var(--secondary-maroon);
-    box-shadow: 0 0 0 2px var(--secondary-maroon);
-  }
-  
-  /* =================================================================
-     3. HEADER (Three-Column Layout)
-     ================================================================= */
-  
-  .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    background: var(--white);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-    z-index: 1000;
-    padding: 16px 0;
-    border-bottom: 1px solid #e0e0e0;
-  }
-  
-  .header-container {
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 0 24px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 24px;
-  }
-  
-  /* Column 1: Logo */
-  .header-logo .logo-img {
-    height: 60px;
-    width: auto;
-    object-fit: contain;
-  }
-  
-  /* Column 2: Navigation */
-  .header-nav {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  
-  .nav-links-row {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 24px;
-  }
-  
-  .nav-links-row a {
-    color: var(--dark-gray);
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 16px;
-    padding: 6px 0;
-    position: relative;
-    transition: color 0.2s;
-  }
-  
-  .nav-links-row a:hover {
-    color: var(--primary-navy);
-  }
-  
-  /* Underline effect for links */
-  .nav-links-row a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: 0;
-    left: 50%;
-    background-color: var(--primary-navy);
-    transition: all 0.3s ease-in-out;
-    transform: translateX(-50%);
-  }
-  
-  .nav-links-row a:hover::after {
-    width: 100%;
-  }
-  
-  /* Dropdown Menu Styles */
-  .dropdown {
-    position: relative;
-  }
-  
-  .dropdown-toggle {
-    cursor: pointer;
-  }
-  
-  .dropdown-menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--white);
-    min-width: 220px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-    border-radius: 8px;
-    z-index: 1001;
-    flex-direction: column;
-    padding: 8px;
-    border: 1px solid #eee;
-  }
-  
-  .dropdown:hover .dropdown-menu,
-  .dropdown:focus-within .dropdown-menu {
-    display: flex;
-  }
-  
-  .dropdown-menu a {
-    color: var(--dark-gray);
-    padding: 10px 16px;
-    font-size: 15px;
-    border-radius: 4px;
-    background: none;
-    transition: background 0.2s, color 0.2s;
-  }
-  /* remove underline effect inside dropdown */
-  .dropdown-menu a::after {
-    display:none;
-  }
-  
-  .dropdown-menu a:hover {
-    background: var(--light-gray);
-    color: var(--primary-navy);
-  }
-  
-  /* Column 3: Donate Button */
-  .header-cta {
-    /* The givebutter widget will occupy this space */
-  }
-  
-  /* =================================================================
-     4. RESPONSIVE HEADER (Mobile Hamburger Menu)
-     ================================================================= */
-  
-  .mobile-menu-toggle {
-    display: none; /* Hidden on desktop */
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 8px;
-    z-index: 1002;
-  }
-  
-  .hamburger-bar {
-    display: block;
-    width: 25px;
-    height: 3px;
-    background-color: var(--dark-gray);
-    margin: 5px 0;
-    transition: all 0.3s ease-in-out;
-  }
-  
-  /* Mobile menu active state animations */
-  .mobile-menu-toggle.is-active .hamburger-bar:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-  }
-  .mobile-menu-toggle.is-active .hamburger-bar:nth-child(2) {
-    opacity: 0;
-  }
-  .mobile-menu-toggle.is-active .hamburger-bar:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
-  }
-  
-  /* =================================================================
-     5. HOMEPAGE & GENERAL PAGE SECTIONS
-     ================================================================= */
-  
-  /* This contains styles from your original file to ensure other parts of the page don't break */
-  .section {
-    padding: 80px 0;
-  }
-  
-  .be-change {
-    background:var(--light-gray);
-  }
-  
-  .be-change h2 {
-    font-size:48px;
-    font-weight:700;
-    color:var(--primary-navy);
-    text-align:center;
-    margin-bottom:20px;
-  }
-  
-  .section-intro {
-    font-size:18px;
-    color:var(--medium-gray);
-    text-align:center;
-    max-width:800px;
-    margin:0 auto 60px;
-  }
-  
-  .change-cards {
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-    gap:30px;
-  }
-  
-  .change-card {
-    background:var(--white);
-    border-radius:12px;
-    overflow:hidden;
-    box-shadow:0 4px 20px rgba(0,0,0,.1);
-    transition:transform .3s;
-  }
-  .change-card:hover{
-    transform:translateY(-5px);
-  }
-  .change-card-image{
-    height:200px;
-    background:var(--medium-gray);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:var(--white);
-    font-size:16px;
-    text-align:center
-  }
-  .change-card-content{
-    padding:30px
-  }
-  .change-card-content h3{
-    font-size:24px;
-    font-weight:700;
-    color:var(--primary-navy);
-    margin-bottom:15px
-  }
-  .change-card-content p{
-    font-size:16px;
-    color:var(--medium-gray)
-  }
-  
-  
-  /* =================================================================
-     6. MEDIA QUERIES (Global Responsive)
-     ================================================================= */
-  
-  @media (max-width: 992px) {
-    body {
-      padding-top: 92px; /* Adjust if header height changes */
-    }
-  
-    /* Hide desktop nav and CTA, show hamburger */
-    .header-nav,
-    .header-cta {
-      display: none;
-    }
-    .mobile-menu-toggle {
-      display: block;
-    }
-  
-    /* Style the mobile navigation container */
-    .header-nav {
-      display: flex;
-      flex-direction: column;
-      position: absolute;
-      top: 91px; /* Match the body padding-top value minus 1px for the border */
-      left: 0;
-      right: 0;
-      background: var(--white);
-      padding: 24px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      /* Hide it off-screen by default */
-      transform: translateY(-120%);
-      transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-    }
-  
-    /* When active, slide it into view */
-    .header-nav.is-active {
-      transform: translateY(0);
-    }
-  
-    .nav-links-row {
-      flex-direction: column;
-      width: 100%;
-      gap: 16px;
-    }
-    
-    .nav-links-row a,
-    .dropdown-toggle {
-      font-size: 18px;
-      width: 100%;
-      text-align: center;
-    }
-    
-    /* Reset dropdown for mobile */
-    .dropdown-menu {
-      position: static;
-      transform: none;
-      box-shadow: none;
-      border: none;
-      background: var(--light-gray);
-      width: 100%;
-      margin-top: 10px;
-      padding: 8px;
-    }
-    
-    /* Other responsive adjustments */
-    .change-cards {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .section {
-      padding: 40px 0;
-    }
-    h2 {
-      font-size: 24px;
-    }
-    .change-cards {
-      grid-template-columns: 1fr;
-    }
-  }
+
+/\* =================================================================
+2\. ACCESSIBILITY & UTILITY
+\================================================================= \*/
+.skip-link {
+position: absolute;
+left: -999px;
+top: auto;
+width: 1px;
+height: 1px;
+overflow: hidden;
+z-index: 10000;
+background: #fff;
+color: #000;
+padding: 8px 16px;
+border-radius: 4px;
+box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+font-weight: 600;
+transition: all 0.2s;
+}
+.skip-link\:focus {
+left: 16px;
+top: 16px;
+width: auto;
+height: auto;
+outline: 3px solid #000;
+outline-offset: 2px;
+}
+a,
+button,
+\[role="button"],
+input,
+select,
+textarea {
+transition: box-shadow 0.2s, outline 0.2s;
+}
+a\:focus,
+button\:focus,
+\[role="button"]\:focus,
+input\:focus,
+select\:focus,
+textarea\:focus {
+outline: 3px solid #000;
+outline-offset: 2px;
+box-shadow: 0 0 0 2px var(--primary-navy);
+}
+a\:active,
+button\:active,
+\[role="button"]\:active {
+outline: 3px solid var(--secondary-maroon);
+box-shadow: 0 0 0 2px var(--secondary-maroon);
+}
+
+/\* =================================================================
+3\. RESPONSIVE BREAKPOINTS
+\================================================================= \*/
+@media (max-width: 992px) {
+body {
+padding-top: 92px;
+}
+}
+@media (max-width: 768px) {
+.section {
+padding: 40px 0;
+}
+h2 {
+font-size: 24px;
+}
+}
+
+/\* =================================================================
+4\. GENERAL PAGE SECTIONS
+\================================================================= \*/
+.section {
+padding: 80px 0;
+}
+.be-change {
+background: var(--light-gray);
+}
+.be-change h2 {
+font-size: 48px;
+font-weight: 700;
+color: var(--primary-navy);
+text-align: center;
+margin-bottom: 20px;
+}
+.section-intro {
+font-size: 18px;
+color: var(--medium-gray);
+text-align: center;
+max-width: 800px;
+margin: 0 auto 60px;
+}
+.change-cards {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 30px;
+}
+.change-card {
+background: var(--white);
+border-radius: 12px;
+overflow: hidden;
+box-shadow: 0 4px 20px rgba(0, 0, 0, .1);
+transition: transform .3s;
+}
+.change-card\:hover {
+transform: translateY(-5px);
+}
+.change-card-image {
+height: 200px;
+background: var(--medium-gray);
+display: flex;
+align-items: center;
+justify-content: center;
+color: var(--white);
+font-size: 16px;
+text-align: center;
+}
+.change-card-content {
+padding: 30px;
+}
+.change-card-content h3 {
+font-size: 24px;
+font-weight: 700;
+color: var(--primary-navy);
+margin-bottom: 15px;
+}
+.change-card-content p {
+font-size: 16px;
+color: var(--medium-gray);
+}
+
+/\* =================================================================
+5\. ISSUES PAGE
+\================================================================= \*/
+.crisis-hero {
+background: var(--light-gray);
+padding: 4rem 0;
+text-align: center;
+}
+.crisis-hero h1 {
+font-size: 2.5rem;
+color: var(--secondary-maroon);
+margin-bottom: 1rem;
+}
+.crisis-hero .subtitle {
+font-size: 1.125rem;
+color: var(--dark-gray);
+}
+.shocking-stats {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+gap: 1.5rem;
+margin-top: 2rem;
+}
+.shock-stat {
+text-align: center;
+}
+.shock-number {
+font-size: 2rem;
+font-weight: 700;
+color: var(--urgent-red);
+}
+.shock-label {
+font-size: 0.9rem;
+color: var(--dark-gray);
+}
+.stories-section .centered-title,
+.impact-stories .centered-title {
+font-size: 2rem;
+text-align: center;
+margin-bottom: 1rem;
+color: var(--primary-navy);
+}
+.stories-section .centered-paragraph,
+.impact-stories .centered-paragraph {
+text-align: center;
+color: var(--dark-gray);
+max-width: 800px;
+margin: 0 auto 2rem;
+}
+.stories-grid,
+.stories-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 1.5rem;
+}
+.story-card {
+background: var(--white);
+padding: 1.5rem;
+border-radius: 0.5rem;
+box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+.story-quote {
+font-style: italic;
+margin-bottom: 1rem;
+color: var(--dark-gray);
+}
+.story-attribution {
+display: flex;
+align-items: center;
+gap: 0.75rem;
+}
+.story-avatar i {
+font-size: 1.5rem;
+color: var(--primary-navy);
+}
+.story-author {
+font-weight: 600;
+color: var(--secondary-maroon);
+}
+.story-context {
+font-size: 0.875rem;
+color: var(--medium-gray);
+}
+.crisis-facts .facts-grid {
+display: flex;
+gap: 2rem;
+flex-wrap: wrap;
+margin-top: 2rem;
+}
+.fact-item {
+flex: 1;
+background: var(--white);
+padding: 1.5rem;
+border-radius: 0.5rem;
+box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+margin-bottom: 1rem;
+}
+.fact-item h3 {
+font-size: 1.25rem;
+color: var(--primary-navy);
+margin-bottom: 0.5rem;
+}
+.fact-item p {
+color: var(--dark-gray);
+margin-bottom: 0.5rem;
+}
+.fact-source {
+font-size: 0.85rem;
+color: var(--medium-gray);
+}
+.facts-visual {
+flex: 1;
+text-align: center;
+}
+.big-number {
+font-size: 3rem;
+font-weight: 700;
+color: var(--secondary-maroon);
+margin-bottom: 1rem;
+}
+.big-caption {
+font-size: 1rem;
+color: var(--dark-gray);
+line-height: 1.4;
+}
+
+/\* =================================================================
+6\. PROGRAMS PAGE
+\================================================================= \*/
+.program-section {
+padding: 80px 0;
+}
+.program-content {
+display: flex;
+gap: 2rem;
+flex-wrap: wrap;
+align-items: center;
+}
+.program-text,
+.program-image {
+flex: 1;
+}
+.program-features {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+gap: 1.5rem;
+margin-top: 1.5rem;
+}
+.program-feature {
+display: flex;
+align-items: flex-start;
+gap: 1rem;
+}
+.program-feature-icon i {
+font-size: 2rem;
+color: var(--primary-navy);
+}
+.program-feature-content h3 {
+font-size: 1.25rem;
+color: var(--secondary-maroon);
+}
+
+/\* =================================================================
+7\. ACTION CENTER PAGE
+\================================================================= \*/
+.action-alerts .alerts-grid {
+display: grid;
+gap: 1.5rem;
+}
+.alert-card {
+background: var(--white);
+padding: 1.5rem;
+border-radius: 0.5rem;
+box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+.alert-priority {
+display: inline-block;
+padding: 0.25rem 0.5rem;
+border-radius: 0.25rem;
+font-size: 0.75rem;
+margin-bottom: 0.5rem;
+}
+.priority-urgent {
+background: var(--urgent-red);
+color: #fff;
+}
+.priority-important {
+background: var(--warning-orange);
+color: #fff;
+}
+.priority-normal {
+background: var(--medium-gray);
+color: #fff;
+}
+.alert-actions a.btn {
+margin-right: 0.5rem;
+}
+.hero-stats,
+.stat-item {
+text-align: center;
+}
+.stat-number {
+font-size: 2rem;
+color: var(--secondary-maroon);
+font-weight: 700;
+}
+
+/\* =================================================================
+8\. NEWS & RESOURCES PAGE
+\================================================================= \*/
+.filter-bar {
+background: var(--light-gray);
+padding: 2rem 0;
+}
+.filter-tabs {
+display: flex;
+gap: 1rem;
+justify-content: center;
+}
+.filter-tab {
+padding: 0.5rem 1rem;
+cursor: pointer;
+border-radius: 0.25rem;
+}
+.filter-tab.active {
+background: var(--primary-navy);
+color: #fff;
+}
+.search-box {
+display: inline-flex;
+align-items: center;
+border: 1px solid #ccc;
+border-radius: 0.25rem;
+overflow: hidden;
+}
+.search-box input {
+border: none;
+padding: 0.5rem;
+}
+.search-box button {
+border: none;
+background: none;
+padding: 0.5rem;
+cursor: pointer;
+}
+.featured-article {
+display: flex;
+gap: 2rem;
+align-items: center;
+}
+.featured-badge {
+background: var(--secondary-maroon);
+color: #fff;
+padding: 0.25rem 0.5rem;
+border-radius: 0.25rem;
+font-size: 0.75rem;
+}
+.card-badge {
+position: absolute;
+top: 1rem;
+left: 1rem;
+padding: 0.25rem 0.5rem;
+border-radius: 0.25rem;
+font-size: 0.75rem;
+}
+.badge-whitepaper { background:#6c757d; color:#fff; }
+.badge-blog { background:#007bff; color:#fff; }
+.badge-article { background:#28a745; color:#fff; }
+.badge-report { background:#17a2b8; color:#fff; }
+.card-actions .btn { margin-right:0.5rem; }
+.read-time { font-size:0.875rem; color\:var(--medium-gray); }
+
+/\* =================================================================
+9\. CONTACT PAGE
+\================================================================= \*/
+.hero { padding:4rem 0; text-align\:center; }
+.hero h1 { font-size:2.5rem; color\:var(--primary-navy); margin-bottom:0.5rem; }
+.hero p { font-size:1rem; color\:var(--medium-gray); }
+.contact-container { display\:flex; gap:2rem; flex-wrap\:wrap; padding:4rem 0; }
+.contact-info, .contact-form {
+flex:1;
+background: var(--white);
+padding:2rem;
+border-radius:0.5rem;
+box-shadow:0 1px 4px rgba(0,0,0,0.1);
+}
+.contact-method { margin-bottom:2rem; }
+.contact-method h2 { font-size:1.5rem; color\:var(--primary-navy); margin-bottom:0.5rem; }
+.contact-method p { font-size:1rem; color\:var(--dark-gray); margin-bottom:0.25rem; }
+\#contact-form { display\:flex; flex-direction\:column; gap:1rem; }
+\#contact-form input, #contact-form select, #contact-form textarea {
+padding:0.75rem;
+border:1px solid #ccc;
+border-radius:0.25rem;
+font-size:1rem;
+color\:var(--dark-gray);
+width:100%;
+}
+\#contact-form button { align-self\:flex-start; padding:0.75rem 1.5rem; background\:var(--secondary-maroon); color:#fff; border\:none; border-radius:0.25rem; cursor\:pointer; }
+
+/\* =================================================================
+10\. DONATE PAGE
+\================================================================= \*/
+.hero-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 2rem 0; text-align: center; }
+.hero-stats .stat-item { display: flex; flex-direction: column; align-items: center; }
+.hero-stats .stat-number { font-size: 2rem; font-weight: 700; color: var(--secondary-maroon); }
+.hero-stats .stat-label { font-size: 1rem; color: var(--dark-gray); }
+.givebutter-section .donation-container { text-align: center; padding: 2rem 0; }
+.impact-stories .stories-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap:1.5rem; }
+.impact-stories .story-card { background: var(--white); border-radius: 0.5rem; padding: 1.5rem; box-shadow: 0 1px 4px rgba(0,0,0,0.1); text-align: center; }
+.monthly-giving .monthly-content { display: flex; flex-wrap: wrap; gap:2rem; align-items: flex-start; }
+.monthly-giving .monthly-text { flex:1; }
+.monthly-giving .monthly-benefits { list-style: disc inside; margin-top: 1rem; color: var(--dark-gray); }
+.monthly-giving .monthly-givebutter { flex:1; text-align: center; }
+.monthly-giving .white-text { color: var(--white); }
+.newsletter.section { padding: 4rem 0; text-align: center; }
+.newsletter.section h2 { font-size: 2rem; color: var(--primary-navy); margin-bottom: 1rem; }
+.newsletter.section p { font-size: 1rem; color: var(--dark-gray); margin-bottom: 1.5rem; }
+.newsletter-form input, .newsletter-form button { padding: 0.75rem 1rem; font-size: 1rem; }
+.newsletter-form input { width: 60%; max-width: 400px; border: 1px solid #ccc; border-radius: 0.25rem 0 0 0.25rem; }
+.newsletter-form button { border: none; background: var(--primary-navy); color: #fff; border-radius: 0 0.25rem 0.25rem 0; cursor: pointer; }
+
+/\* =================================================================
+11\. FOOTER
+\================================================================= \*/
+\#global-footer, .footer {
+background: var(--dark-gray);
+color: var(--light-gray);
+padding: 2rem 0;
+text-align: center;
+}
+\#global-footer a, .footer a {
+color: var(--white);
+text-decoration: none;
+margin: 0 0.5rem;
+transition: color 0.2s;
+}
+\#global-footer a\:hover, .footer a\:hover {
+color: var(--primary-navy);
+}
+\#global-footer p, .footer p {
+margin: 0.5rem 0;
+font-size: 0.875rem;
+}
