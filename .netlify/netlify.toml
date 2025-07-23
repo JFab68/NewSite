@@ -1,0 +1,107 @@
+headersOrigin = "config"
+redirectsOrigin = "config"
+
+[functions]
+
+[functions."*"]
+
+[[plugins]]
+origin = "ui"
+package = "@netlify/plugin-lighthouse"
+
+[plugins.inputs]
+
+[build]
+publish = "C:\\Users\\johnf\\VS Code Projects\\NewSite"
+publishOrigin = "config"
+
+[build.environment]
+NODE_VERSION = "18"
+
+[build.processing]
+
+[build.processing.css]
+
+[build.processing.html]
+
+[build.processing.images]
+
+[build.processing.js]
+
+[build.services]
+
+[[headers]]
+for = "/*"
+
+[headers.values]
+X-Frame-Options = "DENY"
+X-Content-Type-Options = "nosniff"
+X-XSS-Protection = "1; mode=block"
+Referrer-Policy = "strict-origin-when-cross-origin"
+Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+[[headers]]
+for = "/css/*"
+
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+for = "/js/*"
+
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+for = "/10 Assets/*"
+
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+
+[[redirects]]
+from = "/"
+to = "/1 Homepage.html"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/index.html"
+to = "/1 Homepage.html"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/includes"
+to = "/includes/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/*"
+to = "/1 Homepage.html"
+status = 404.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
