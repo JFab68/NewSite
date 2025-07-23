@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Test - Praxis Initiative</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Inline test styles to verify if external CSS is working */
+        .test-section {
+            padding: 40px;
+            background: linear-gradient(135deg, #000080 0%, #800000 100%);
+            color: white;
+            text-align: center;
+            margin: 20px;
+            border-radius: 10px;
+        }
+        .test-message {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        .css-test {
+            background: var(--primary-navy);
+            color: var(--white);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-section">
+        <h1 class="test-message">CSS Test Page</h1>
+        <p>If you can see this styled content, the CSS is loading correctly.</p>
+        
+        <div class="css-test">
+            <h2>External CSS Test</h2>
+            <p>This should have navy background if external CSS is working.</p>
+        </div>
+        
+        <div class="hero">
+            <div class="container">
+                <h2>Hero Section Test</h2>
+                <p>This should use hero styles from external CSS.</p>
+                <a href="#" class="btn btn-primary">Test Button</a>
+            </div>
+        </div>
+    </div>
+    
+    <header class="header">
+        <div class="header-container">
+            <div class="header-logo">
+                <h3>Header Test</h3>
+            </div>
+            <nav class="header-nav">
+                <div class="nav-links-row">
+                    <a href="#">Test Link 1</a>
+                    <a href="#">Test Link 2</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <main style="padding-top: 120px;">
+        <section class="section">
+            <div class="container">
+                <h2>Main Content Test</h2>
+                <p>This content should be properly spaced and styled.</p>
+            </div>
+        </section>
+    </main>
+    
+    <script>
+        // Test if CSS variables are working
+        const testDiv = document.createElement('div');
+        testDiv.style.background = 'var(--primary-navy)';
+        document.body.appendChild(testDiv);
+        
+        const computedStyle = getComputedStyle(testDiv);
+        const bgColor = computedStyle.backgroundColor;
+        
+        console.log('CSS Variable Test - Primary Navy Color:', bgColor);
+        
+        if (bgColor === 'rgb(0, 0, 128)' || bgColor === '#000080') {
+            console.log('✅ CSS is loading correctly!');
+            document.querySelector('.test-message').textContent += ' ✅ CSS WORKING!';
+        } else {
+            console.log('❌ CSS not loading properly');
+            document.querySelector('.test-message').textContent += ' ❌ CSS NOT WORKING!';
+        }
+        
+        document.body.removeChild(testDiv);
+    </script>
+</body>
+</html>

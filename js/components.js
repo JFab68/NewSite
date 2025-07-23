@@ -11,7 +11,6 @@ class ComponentLoader {
         
         // Map filenames to page identifiers
         const pageMap = {
-            '1 Homepage.html': 'homepage',
             '1 homepage.html': 'home',
             '2 issues.html': 'issues',
             '3 about.html': 'about',
@@ -45,29 +44,72 @@ class ComponentLoader {
 
     setActiveNavItem() {
         // Set active navigation item based on current page
-        const navLinks = document.querySelectorAll('.nav-menu a[data-page]');
+        const navLinks = document.querySelectorAll('.header-nav a, .nav-row-1 a, .nav-row-2 a');
         navLinks.forEach(link => {
-            if (link.dataset.page === this.currentPage) {
+            const href = link.getAttribute('href');
+            if (href && href.includes(this.currentPage)) {
                 link.classList.add('active');
-            } else {
-                link.classList.remove('active');
             }
         });
     }
 
     initMobileMenu() {
         const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-        const navMenu = document.querySelector('.nav-menu');
+        const headerNav = document.querySelector('.header-nav');
 
-        if (mobileMenuToggle && navMenu) {
+        if (mobileMenuToggle && headerNav) {
             mobileMenuToggle.addEventListener('click', () => {
-                navMenu.classList.toggle('active');
+                const isActive = headerNav.classList.contains('active');
+                headerNav.classList.toggle('active');
+                mobileMenuToggle.setAttribute('aria-expanded', !isActive);
+                
+                // Add mobile menu styles dynamically
+                if (!isActive) {
+                    headerNav.style.display = 'flex';
+                    headerNav.style.position = 'absolute';
+                    headerNav.style.top = '100%';
+                    headerNav.style.left = '0';
+                    headerNav.style.right = '0';
+                    headerNav.style.background = 'var(--white)';
+                    headerNav.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+                    headerNav.style.padding = '20px';
+                    headerNav.style.flexDirection = 'column';
+                    headerNav.style.gap = '10px';
+                    headerNav.style.zIndex = '1002';
+                } else {
+                    headerNav.style.display = '';
+                    headerNav.style.position = '';
+                    headerNav.style.top = '';
+                    headerNav.style.left = '';
+                    headerNav.style.right = '';
+                    headerNav.style.background = '';
+                    headerNav.style.boxShadow = '';
+                    headerNav.style.padding = '';
+                    headerNav.style.flexDirection = '';
+                    headerNav.style.gap = '';
+                    headerNav.style.zIndex = '';
+                }
             });
 
             // Close mobile menu when clicking outside
             document.addEventListener('click', (e) => {
-                if (!e.target.closest('.nav-menu') && !e.target.closest('.mobile-menu-toggle')) {
-                    navMenu.classList.remove('active');
+                if (!e.target.closest('.header-nav') && !e.target.closest('.mobile-menu-toggle')) {
+                    if (headerNav.classList.contains('active')) {
+                        headerNav.classList.remove('active');
+                        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                        // Reset styles
+                        headerNav.style.display = '';
+                        headerNav.style.position = '';
+                        headerNav.style.top = '';
+                        headerNav.style.left = '';
+                        headerNav.style.right = '';
+                        headerNav.style.background = '';
+                        headerNav.style.boxShadow = '';
+                        headerNav.style.padding = '';
+                        headerNav.style.flexDirection = '';
+                        headerNav.style.gap = '';
+                        headerNav.style.zIndex = '';
+                    }
                 }
             });
         }
@@ -106,11 +148,11 @@ class ComponentLoader {
     }
 
     async init() {
-        // Load header and footer
+        // Load header and footer components if they exist
         const headerLoaded = await this.loadComponent('global-header', 'includes/header.html');
         const footerLoaded = await this.loadComponent('global-footer', 'includes/footer.html');
 
-        // Wait a bit for DOM to update
+        // Wait a bit for DOM to update, then initialize components
         setTimeout(() => {
             if (headerLoaded) {
                 this.setActiveNavItem();
@@ -118,7 +160,133 @@ class ComponentLoader {
                 this.initHeaderScrollEffect();
             }
             this.initSmoothScrolling();
+            this.initOtherComponents();
         }, 100);
+    }
+
+    initOtherComponents() {
+        // Initialize dropdown menus
+        this.initDropdowns();
+        
+        // Initialize any form handlers
+        this.initForms();
+        
+        // Initialize scroll animations
+        this.initScrollAnimations();
+        
+        // Initialize FAQ accordions
+        this.initFAQ();
+        
+        // Initialize contact form
+        this.initContactForm();
+    }
+
+    initDropdowns() {
+        const dropdowns = document.querySelectorAll('.dropdown');
+        dropdowns.forEach(dropdown => {
+            const toggle = dropdown.querySelector('.dropdown-toggle');
+            const menu = dropdown.querySelector('.dropdown-menu');
+            
+            if (toggle && menu) {
+                // Close dropdown when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!dropdown.contains(e.target)) {
+                        menu.style.opacity = '0';
+                        menu.style.visibility = 'hidden';
+                    }
+                });
+            }
+        });
+    }
+
+    initForms() {
+        // Newsletter form handling
+        const newsletterForm = document.querySelector('.newsletter-form');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = newsletterForm.querySelector('input[type="email"]').value;
+                if (email) {
+                    console.log('Newsletter signup:', email);
+                    // Here you would typically send to your backend
+                }
+            });
+        }
+    }
+
+    initScrollAnimations() {
+        // Simple fade-in animation for elements
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements that should animate in
+        const animateElements = document.querySelectorAll('.change-card, .team-member, .impact-item, .challenge-item');
+        animateElements.forEach(el => observer.observe(el));
+    }
+
+    initFAQ() {
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            if (question) {
+                question.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    
+                    // Close all other FAQ items
+                    faqItems.forEach(otherItem => {
+                        otherItem.classList.remove('active');
+                    });
+                    
+                    // Toggle current item
+                    if (!isActive) {
+                        item.classList.add('active');
+                    }
+                });
+            }
+        });
+    }
+
+    initContactForm() {
+        const contactForm = document.querySelector('.contact-form form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const formData = new FormData(contactForm);
+                const name = contactForm.querySelector('input[type="text"]').value;
+                const email = contactForm.querySelector('input[type="email"]').value;
+                const message = contactForm.querySelector('textarea').value;
+                
+                if (name && email && message) {
+                    // Show loading state
+                    const submitBtn = contactForm.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.textContent;
+                    submitBtn.textContent = 'Sending...';
+                    submitBtn.disabled = true;
+                    
+                    // Simulate form submission (replace with actual form handler)
+                    setTimeout(() => {
+                        alert('Thank you for your message! We\'ll get back to you soon.');
+                        contactForm.reset();
+                        submitBtn.textContent = originalText;
+                        submitBtn.disabled = false;
+                    }, 1500);
+                    
+                    console.log('Contact form submitted:', { name, email, message });
+                }
+            });
+        }
     }
 }
 
@@ -146,13 +314,59 @@ window.PraxisUtils = {
         button.disabled = false;
     },
 
-    // Newsletter subscription handler
-    handleNewsletter: (form) => {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = form.querySelector('input[type="email"]').value;
-            alert(`Thank you for subscribing with email: ${email}. You'll receive updates on our prison oversight advocacy, policy research, and community programs.`);
-            form.reset();
-        });
+    // Smooth scroll to element
+    scrollToElement: (elementId) => {
+        const element = document.getElementById(elementId);
+        if (element) {
+            element.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    },
+
+    // Format numbers with commas
+    formatNumber: (num) => {
+        return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    },
+
+    // Debounce function for search/input handlers
+    debounce: (func, wait) => {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
     }
 };
+
+// Add some additional event listeners for better UX
+document.addEventListener('DOMContentLoaded', () => {
+    // Handle external links
+    document.querySelectorAll('a[href^="http"]').forEach(link => {
+        if (!link.hostname === window.location.hostname) {
+            link.setAttribute('target', '_blank');
+            link.setAttribute('rel', 'noopener noreferrer');
+        }
+    });
+
+    // Handle phone number links
+    document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            // Analytics tracking could go here
+            console.log('Phone number clicked:', link.href);
+        });
+    });
+
+    // Handle email links
+    document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            // Analytics tracking could go here
+            console.log('Email link clicked:', link.href);
+        });
+    });
+});

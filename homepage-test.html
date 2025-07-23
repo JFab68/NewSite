@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Praxis Initiative - Homepage Test</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Simple test to see if content shows -->
+    <div style="background: red; color: white; padding: 20px; position: fixed; top: 0; left: 0; z-index: 9999;">
+        🔴 CSS TEST - If you see this red box, HTML is loading!
+    </div>
+
+    <header class="header">
+        <div class="header-container">
+            <a href="1 Homepage.html" class="header-logo">
+                <img src="10 Assets/Praxis Logos/Praxis Logo New Italic Tagline Navy Transparent BG 1078 x 218.png" alt="Praxis Initiative Logo" class="logo-img">
+            </a>
+            <nav class="header-nav">
+                <div class="nav-links-row">
+                    <a href="1 Homepage.html">Home</a>
+                    <a href="2 Issues.html">Issues</a>
+                    <a href="3 About.html">About</a>
+                </div>
+            </nav>
+            <button class="mobile-menu-toggle" aria-label="Open navigation menu">
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <main id="main-content" role="main">
+        <section class="hero" id="home">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1>🎯 CSS TEST - Transforming Justice Together</h1>
+                        <p>If you can see this styled content with proper fonts and colors, the CSS is working!</p>
+                        <div class="hero-buttons">
+                            <a href="#test" class="btn btn-primary">PRIMARY BUTTON</a>
+                            <a href="#test" class="btn btn-secondary">SECONDARY BUTTON</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" style="background: #f0f0f0;">
+            <div class="container">
+                <h2>📋 Section Test</h2>
+                <p>This section should have proper spacing and typography.</p>
+                <div class="change-cards">
+                    <div class="change-card">
+                        <div class="change-card-content">
+                            <h3>Test Card 1</h3>
+                            <p>This card should have proper styling with shadow and hover effects.</p>
+                        </div>
+                    </div>
+                    <div class="change-card">
+                        <div class="change-card-content">
+                            <h3>Test Card 2</h3>
+                            <p>Another test card to verify grid layout is working.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <p>🧪 Footer Test - CSS should style this properly</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        console.log('🔍 JavaScript Test - Page loaded');
+        
+        // Test CSS variables
+        const root = document.documentElement;
+        const primaryNavy = getComputedStyle(root).getPropertyValue('--primary-navy');
+        console.log('Primary Navy Variable:', primaryNavy);
+        
+        // Add some visual feedback
+        setTimeout(() => {
+            const testBox = document.createElement('div');
+            testBox.innerHTML = '✅ JS LOADED - CSS Variables: ' + primaryNavy;
+            testBox.style.cssText = `
+                position: fixed; 
+                bottom: 0; 
+                left: 0; 
+                background: green; 
+                color: white; 
+                padding: 10px; 
+                z-index: 9999;
+                font-family: monospace;
+            `;
+            document.body.appendChild(testBox);
+        }, 1000);
+    </script>
+</body>
+</html>
